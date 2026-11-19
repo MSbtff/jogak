@@ -216,24 +216,7 @@ pytest
 ruff check . && ruff format --check .
 ```
 
-## 배포
 
-`v0.1.0` 같은 태그를 push하면 GitHub Actions가 테스트, 빌드, PyPI 배포를 차례로 실행합니다. API 토큰 없이 [Trusted Publishing](https://docs.pypi.org/trusted-publishers/)을 씁니다.
-
-처음 한 번만 준비합니다.
-
-1. PyPI에 로그인한 뒤 **Your projects → Publishing → Add a new pending publisher**에서 다음을 입력합니다.
-   - PyPI project name: `jogak`
-   - Owner / Repository: GitHub 저장소
-   - Workflow name: `publish.yml`
-   - Environment name: `pypi`
-2. GitHub 저장소의 **Settings → Environments**에서 `pypi` 환경을 만듭니다.
-
-그 다음부터는 `src/jogak/__init__.py`의 `__version__`을 올리고 같은 번호로 태그를 push하면 됩니다.
-
-```bash
-git tag v0.1.0 && git push origin v0.1.0
-```
 
 ## 로드맵
 
