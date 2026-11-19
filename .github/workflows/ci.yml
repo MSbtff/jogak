@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_call:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13", "3.14"]
+        extras: ["dev", "dev,kiwi,tiktoken,langchain"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e ".[${{ matrix.extras }}]"
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: pytest -q -rs
+
+  wheel:
+    # 소스 폴더가 아니라 설치된 패키지로 동작하는지 확인
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install build
+      - run: python -m build
+      - name: Smoke test the built wheel
+        run: |
+          python -m venv /tmp/smoke
+          /tmp/smoke/bin/pip install dist/*.whl
+          cd /tmp
+          printf '제1조(목적) 본문\n제2조(정의) ① 첫째\n② 둘째\n' | /tmp/smoke/bin/jogak --tree | grep -q "제2조(정의)"

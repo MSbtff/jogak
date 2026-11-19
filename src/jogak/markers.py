@@ -1,0 +1,170 @@
+"""줄 머리의 구조 마커(제1장, 제3조, ①, 1., 가., □ 등)를 인식합니다."""
+
+from __future__ import annotations
+
+import re
+from dataclasses import dataclass
+
+HAN_ORDINALS = "가나다라마바사아자차카타파하"
+
+# 제목 계층. 숫자가 작을수록 상위. 마크다운 제목은 #의 개수를 그대로 씁니다.
+RANK_PART = 1  # 제1편, 부칙, [별표]
+RANK_CHAPTER = 2  # 제1장
+RANK_SECTION = 3  # 제1절
+RANK_SUBSECTION = 4  # 제1관
+RANK_ARTICLE = 5  # 제1조
+_DIVISION_RANK = {"편": RANK_PART, "장": RANK_CHAPTER, "절": RANK_SECTION, "관": RANK_SUBSECTION}
+_DIVISION_TYPE = {"편": "part", "장": "chapter", "절": "section", "관": "subsection"}
+
+
+@dataclass(frozen=True, slots=True)
+class Marker:
+    """줄 머리에서 찾은 마커.
+
+    Attributes:
+        kind: ``"heading"`` (장·조·마크다운 제목 등) 또는 ``"item"`` (①, 1., 가., □ 등).
+        type: 세부 종류. 같은 type 끼리 형제가 됩니다 (예: ``"article"``, ``"num_dot"``).
+        label: 경로에 표시할 이름 (예: ``"제3조(적용 범위)"``, ``"①"``).
+        end: 마커가 끝나는 위치 (본문 시작 위치, 줄 안의 상대 위치).
+        rank: 제목 계층 (item 은 0).
+        ordinal: 순번 (①=1, 가=1). 순번이 없는 글머리표는 None.
+    """
+
+    kind: str
+    type: str
+    label: str
+    end: int
+    rank: int = 0
+    ordinal: int | None = None
+
+
+# --- 제목 -------------------------------------------------------------------
+
+_ARTICLE = re.compile(
+    r"제\s*([0-9]+)\s*조(?:\s*의\s*([0-9]+))?(?:\s*\(([^()\n]{1,60})\))?(?=\s|$|[①-⑳])"
+)
+_DIVISION = re.compile(r"제\s*([0-9]+)\s*(편|장|절|관)(?:\s+(.+?))?\s*$")
+_ADDENDA = re.compile(r"부\s*칙(?:\s*[<(\[].*)?\s*$")
+_APPENDIX = re.compile(r"\[\s*별\s*(?:표|지)[^\]\n]{0,20}\](.*)$")
+_MD_HEADING = re.compile(r"(#{1,6})\s+(.+?)\s*#*\s*$")
+_CIRCLED_START = re.compile(r"\s*[①-⑳]")
+
+
+def match_heading(line: str, last_article: int) -> Marker | None:
+    """앞 공백을 제거한 한 줄에서 제목 마커를 찾습니다.
+
+    ``last_article`` 은 직전 조 번호입니다. 제목 괄호가 없는 "제5조 ..." 줄이 본문 속 인용
+    ("제3조 및 제4조의 ...")인지 실제 조문인지 가리는 데 씁니다.
+    """
+    if line.startswith("#"):
+        m = _MD_HEADING.match(line)
+        if m:
+            level = len(m.group(1))
+            text = m.group(2).replace("**", "").strip()
+            a = _ARTICLE.match(text)
+            if a and not text[a.end() :].strip():  # "##### 제1조 (목적)" → "제1조(목적)"
+                text = _article_label(a)
+            return Marker("heading", f"md{level}", text, len(line), rank=level)
+        return None
+
+    if line.startswith("제"):
+        m = _DIVISION.match(line)
+        if m:
+            title = (m.group(3) or "").strip()
+            if len(title) <= 50 and not title.endswith("다."):
+                unit = m.group(2)
+                label = f"제{m.group(1)}{unit}" + (f" {title}" if title else "")
+                return Marker(
+                    "heading", _DIVISION_TYPE[unit], label, len(line), _DIVISION_RANK[unit]
+                )
+        m = _ARTICLE.match(line)
+        if m:
+            num, sub, title = int(m.group(1)), m.group(2), m.group(3)
+            rest = line[m.end() :]
+            plausible = (
+                title is not None
+                or not rest.strip()
+                or _CIRCLED_START.match(rest) is not None
+                or (sub is None and num == last_article + 1)
+                or (sub is not None and num == last_article)
+            )
+            if plausible:
+                return Marker(
+                    "heading", "article", _article_label(m), m.end(), RANK_ARTICLE, ordinal=num
+                )
+        return None
+
+    if line.startswith("부"):
+        m = _ADDENDA.match(line)
+        if m:
+            return Marker("heading", "addenda", _shorten(line.strip(), 30), len(line), RANK_PART)
+        return None
+
+    if line.startswith("["):
+        m = _APPENDIX.match(line)
+        if m:
+            return Marker("heading", "appendix", _shorten(line.strip(), 40), len(line), RANK_PART)
+    return None
+
+
+def _article_label(m: re.Match[str]) -> str:
+    num, sub, title = m.group(1), m.group(2), m.group(3)
+    return f"제{int(num)}조" + (f"의{sub}" if sub else "") + (f"({title.strip()})" if title else "")
+
+
+# --- 항목 -------------------------------------------------------------------
+# 마크다운으로 변환된 법령(예: legalize-kr)의 "**①**", "1\." 같은 표기도 받아들입니다.
+
+_HAN = HAN_ORDINALS
+_B = r"(?:\*\*|__)?"  # 굵게 표시
+_SUB = r"(?:의[0-9]{1,2})?"  # 가지번호: "1의2."
+
+
+def _item(core: str, tail: str = r"(?=\s|$)") -> re.Pattern[str]:
+    return re.compile(_B + core + _B + tail)
+
+
+_ITEM_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
+    ("num_pparen", _item(r"\\?\(([0-9]{1,2})\\?\)")),
+    ("han_pparen", _item(rf"\\?\(([{_HAN}])\\?\)")),
+    ("num_dot", _item(rf"([0-9]{{1,2}}){_SUB}\\?\.")),
+    ("han_dot", _item(rf"([{_HAN}]){_SUB}\\?\.")),
+    ("num_paren", _item(r"([0-9]{1,2})\\?\)")),
+    ("han_paren", _item(rf"([{_HAN}])\\?\)")),
+    ("circled", _item(r"([①-⑳])", tail="")),
+    ("circled_han", _item(r"([㉮-㉻])", tail="")),
+    ("bullet", _item(r"\\?([□■○●◎◇◆▶▷•·ㅇ※*\-])", tail=r"(?=\s)")),
+)
+_SPACES = re.compile(r"\s*")
+_MD_NOISE = re.compile(r"\*\*|__|\\")
+
+
+def _ordinal(type_: str, token: str) -> int | None:
+    if type_.startswith("num"):
+        return int(token)
+    if type_.startswith("han"):
+        return HAN_ORDINALS.index(token) + 1
+    if type_ == "circled":
+        return ord(token) - 0x2460 + 1
+    if type_ == "circled_han":
+        return ord(token) - 0x326E + 1
+    return None
+
+
+def match_item(line: str) -> Marker | None:
+    """앞 공백을 제거한 한 줄에서 항목 마커를 찾습니다."""
+    for type_, pattern in _ITEM_PATTERNS:
+        m = pattern.match(line)
+        if m is None:
+            continue
+        token = m.group(1)
+        if type_ == "bullet":
+            type_ = f"bullet:{token}"
+        end = _SPACES.match(line, m.end()).end()
+        label = _MD_NOISE.sub("", m.group(0))
+        return Marker("item", type_, label, end, ordinal=_ordinal(type_, token))
+    return None
+
+
+def _shorten(text: str, n: int) -> str:
+    return text if len(text) <= n else text[: n - 1] + "…"
