@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1340" height="900" viewBox="0 0 1340 900" font-family="'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<title>jogak UML 컴포넌트 다이어그램</title>
+<defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#3d444d" stroke-width="1.4"/></marker></defs>
+<rect width="1340" height="900" fill="#ffffff"/>
+<rect x="420" y="20" width="230" height="76" rx="3" fill="#ddeeff" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="626" y="28" width="16" height="20" rx="1" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="621" y="32" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="621" y="40" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="535.0" y="42" font-size="11" font-weight="normal" text-anchor="middle" fill="#57606a" >«component»</text>
+<text x="535.0" y="61" font-size="14.5" font-weight="bold" text-anchor="middle" fill="#1f2328" >사용자 코드</text>
+<text x="535.0" y="80" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >RAG 파이프라인 · 터미널</text>
+<rect x="40" y="170" width="1000" height="590" rx="4" fill="#fbfcfd" stroke="#3d444d" stroke-width="1.6"/>
+<rect x="1010" y="180" width="16" height="20" rx="1" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="1005" y="184" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="1005" y="192" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="56" y="194" font-size="11" font-weight="normal" text-anchor="start" fill="#57606a" >«subsystem»</text>
+<text x="132" y="195" font-size="15" font-weight="bold" text-anchor="start" fill="#1f2328" >jogak</text>
+<rect x="90" y="210" width="230" height="76" rx="3" fill="#f6f8fa" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="296" y="218" width="16" height="20" rx="1" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="291" y="222" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="291" y="230" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="205.0" y="232" font-size="11" font-weight="normal" text-anchor="middle" fill="#57606a" >«component»</text>
+<text x="205.0" y="251" font-size="14.5" font-weight="bold" text-anchor="middle" fill="#1f2328" >cli</text>
+<text x="205.0" y="270" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >jogak 명령 (텍스트 → 청크)</text>
+<rect x="420" y="210" width="230" height="76" rx="3" fill="#f6f8fa" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="626" y="218" width="16" height="20" rx="1" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="621" y="222" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="621" y="230" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="535.0" y="232" font-size="11" font-weight="normal" text-anchor="middle" fill="#57606a" >«component»</text>
+<text x="535.0" y="251" font-size="14.5" font-weight="bold" text-anchor="middle" fill="#1f2328" >jogak</text>
+<text x="535.0" y="270" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >공개 API (하위 모듈 재노출)</text>
+<rect x="750" y="210" width="230" height="76" rx="3" fill="#f6f8fa" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="956" y="218" width="16" height="20" rx="1" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="951" y="222" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="951" y="230" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="865.0" y="232" font-size="11" font-weight="normal" text-anchor="middle" fill="#57606a" >«component»</text>
+<text x="865.0" y="251" font-size="14.5" font-weight="bold" text-anchor="middle" fill="#1f2328" >langchain</text>
+<text x="865.0" y="270" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >JogakTextSplitter 어댑터</text>
+<rect x="90" y="370" width="230" height="76" rx="3" fill="#f6f8fa" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="296" y="378" width="16" height="20" rx="1" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="291" y="382" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="291" y="390" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="205.0" y="392" font-size="11" font-weight="normal" text-anchor="middle" fill="#57606a" >«component»</text>
+<text x="205.0" y="411" font-size="14.5" font-weight="bold" text-anchor="middle" fill="#1f2328" >sentences</text>
+<text x="205.0" y="430" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >regex · kiwi 문장 분리</text>
+<rect x="420" y="370" width="230" height="76" rx="3" fill="#f6f8fa" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="626" y="378" width="16" height="20" rx="1" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="621" y="382" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="621" y="390" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="535.0" y="392" font-size="11" font-weight="normal" text-anchor="middle" fill="#57606a" >«component»</text>
+<text x="535.0" y="411" font-size="14.5" font-weight="bold" text-anchor="middle" fill="#1f2328" >chunker</text>
+<text x="535.0" y="430" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >Chunker · Chunk</text>
+<rect x="750" y="370" width="230" height="76" rx="3" fill="#f6f8fa" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="956" y="378" width="16" height="20" rx="1" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="951" y="382" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="951" y="390" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="865.0" y="392" font-size="11" font-weight="normal" text-anchor="middle" fill="#57606a" >«component»</text>
+<text x="865.0" y="411" font-size="14.5" font-weight="bold" text-anchor="middle" fill="#1f2328" >length</text>
+<text x="865.0" y="430" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >tiktoken · HF 길이 함수</text>
+<rect x="420" y="510" width="230" height="76" rx="3" fill="#f6f8fa" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="626" y="518" width="16" height="20" rx="1" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="621" y="522" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="621" y="530" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="535.0" y="532" font-size="11" font-weight="normal" text-anchor="middle" fill="#57606a" >«component»</text>
+<text x="535.0" y="551" font-size="14.5" font-weight="bold" text-anchor="middle" fill="#1f2328" >parser</text>
+<text x="535.0" y="570" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >Node · parse()</text>
+<rect x="420" y="650" width="230" height="76" rx="3" fill="#f6f8fa" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="626" y="658" width="16" height="20" rx="1" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="621" y="662" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="621" y="670" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="535.0" y="672" font-size="11" font-weight="normal" text-anchor="middle" fill="#57606a" >«component»</text>
+<text x="535.0" y="691" font-size="14.5" font-weight="bold" text-anchor="middle" fill="#1f2328" >markers</text>
+<text x="535.0" y="710" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >Marker · 줄 머리 규칙</text>
+<path d="M205.0,210 L205.0,148" fill="none" stroke="#3d444d" stroke-width="1.3"/>
+<circle cx="205.0" cy="140" r="8" fill="#ffffff" stroke="#3d444d" stroke-width="1.4"/>
+<rect x="219.0" y="132.5" width="65.96000000000001" height="16.5" fill="#ffffff"/>
+<text x="223.0" y="144" font-size="11.5" font-weight="normal" text-anchor="start" fill="#1f2328" >jogak CLI</text>
+<path d="M535.0,210 L535.0,148" fill="none" stroke="#3d444d" stroke-width="1.3"/>
+<circle cx="535.0" cy="140" r="8" fill="#ffffff" stroke="#3d444d" stroke-width="1.4"/>
+<rect x="549.0" y="132.5" width="117.48" height="16.5" fill="#ffffff"/>
+<text x="553.0" y="144" font-size="11.5" font-weight="normal" text-anchor="start" fill="#1f2328" >chunk() · parse()</text>
+<path d="M865.0,210 L865.0,148" fill="none" stroke="#3d444d" stroke-width="1.3"/>
+<circle cx="865.0" cy="140" r="8" fill="#ffffff" stroke="#3d444d" stroke-width="1.4"/>
+<rect x="879.0" y="132.5" width="85.28" height="16.5" fill="#ffffff"/>
+<text x="883.0" y="144" font-size="11.5" font-weight="normal" text-anchor="start" fill="#1f2328" >TextSplitter</text>
+<path d="M460,96 L205.0,112 L205.0,131" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<path d="M535.0,96 L535.0,131" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<path d="M610,96 L865.0,112 L865.0,131" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<rect x="478.9" y="110.5" width="40.2" height="16.5" fill="#ffffff"/>
+<text x="499.0" y="122" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >«use»</text>
+<path d="M320,408.0 L362,408.0" fill="none" stroke="#3d444d" stroke-width="1.3"/>
+<circle cx="370" cy="408.0" r="8" fill="#ffffff" stroke="#3d444d" stroke-width="1.4"/>
+<path d="M370,395.0 A13,13 0 0 1 370,421.0" fill="none" stroke="#3d444d" stroke-width="1.4"/>
+<path d="M383,408.0 L420,408.0" fill="none" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="314.48" y="350.5" width="111.04" height="16.5" fill="#ffffff"/>
+<text x="370" y="362" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2328" >SentenceSplitter</text>
+<path d="M750,408.0 L708,408.0" fill="none" stroke="#3d444d" stroke-width="1.3"/>
+<circle cx="700" cy="408.0" r="8" fill="#ffffff" stroke="#3d444d" stroke-width="1.4"/>
+<path d="M700,421.0 A13,13 0 0 1 700,395.0" fill="none" stroke="#3d444d" stroke-width="1.4"/>
+<path d="M687,408.0 L650,408.0" fill="none" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="670.24" y="350.5" width="59.52" height="16.5" fill="#ffffff"/>
+<text x="700" y="362" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#1f2328" >LengthFn</text>
+<path d="M165.0,286 L165.0,316 L480,316 L480,370" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<path d="M90,248.0 L62,248.0 L62,548.0 L420,548.0" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<path d="M535.0,286 L535.0,370" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<path d="M905.0,286 L905.0,330 L590,330 L590,370" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<path d="M535.0,446 L535.0,510" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<path d="M535.0,586 L535.0,650" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<rect x="540.9" y="470.5" width="40.2" height="16.5" fill="#ffffff"/>
+<text x="561.0" y="482" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >«use»</text>
+<rect x="540.9" y="610.5" width="40.2" height="16.5" fill="#ffffff"/>
+<text x="561.0" y="622" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >«use»</text>
+<rect x="98" y="528.5" width="85.28" height="16.5" fill="#ffffff"/>
+<text x="102" y="540.0" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >«use» --tree</text>
+<rect x="90" y="800" width="230" height="66" rx="3" fill="#fff8e6" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="296" y="808" width="16" height="20" rx="1" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="291" y="812" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="291" y="820" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="205.0" y="822" font-size="11" font-weight="normal" text-anchor="middle" fill="#57606a" >«library»</text>
+<text x="205.0" y="841" font-size="14.5" font-weight="bold" text-anchor="middle" fill="#1f2328" >kiwipiepy</text>
+<rect x="750" y="800" width="150" height="66" rx="3" fill="#fff8e6" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="876" y="808" width="16" height="20" rx="1" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="871" y="812" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="871" y="820" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="825.0" y="822" font-size="11" font-weight="normal" text-anchor="middle" fill="#57606a" >«library»</text>
+<text x="825.0" y="841" font-size="14.5" font-weight="bold" text-anchor="middle" fill="#1f2328" >tiktoken</text>
+<rect x="916" y="800" width="150" height="66" rx="3" fill="#fff8e6" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="1042" y="808" width="16" height="20" rx="1" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="1037" y="812" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="1037" y="820" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="991.0" y="822" font-size="11" font-weight="normal" text-anchor="middle" fill="#57606a" >«library»</text>
+<text x="991.0" y="841" font-size="14.5" font-weight="bold" text-anchor="middle" fill="#1f2328" >tokenizers</text>
+<rect x="1076" y="210" width="256" height="76" rx="3" fill="#fff8e6" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="1308" y="218" width="16" height="20" rx="1" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="1303" y="222" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<rect x="1303" y="230" width="10" height="4" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="1204.0" y="232" font-size="11" font-weight="normal" text-anchor="middle" fill="#57606a" >«library»</text>
+<text x="1204.0" y="251" font-size="14.5" font-weight="bold" text-anchor="middle" fill="#1f2328" >langchain-text-splitters</text>
+<text x="1204.0" y="270" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >+ langchain-core</text>
+<path d="M205.0,446 L205.0,800" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<rect x="123.95" y="588.5" width="162.1" height="16.5" fill="#ffffff"/>
+<text x="205.0" y="600" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >«use» 함수 호출 시 import</text>
+<path d="M825,446 L825,800" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<path d="M950,446 L950,800" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<rect x="783.95" y="588.5" width="162.1" height="16.5" fill="#ffffff"/>
+<text x="865" y="600" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >«use» 함수 호출 시 import</text>
+<path d="M980,248.0 L1076,248.0" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<rect x="1007.9" y="226.5" width="40.2" height="16.5" fill="#ffffff"/>
+<text x="1028" y="238.0" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >«use»</text>
+<rect x="980.99" y="258.5" width="94.02000000000001" height="16.5" fill="#ffffff"/>
+<text x="1028" y="270.0" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >import 시 필수</text>
+<path d="M1080,470 L1310,470 L1320,480 L1320,566.5 L1080,566.5 Z" fill="#fffbdd" stroke="#3d444d" stroke-width="1.1"/><path d="M1310,470 L1310,480 L1320,480" fill="none" stroke="#3d444d" stroke-width="1.1"/>
+<text x="1090" y="488.0" font-size="11.5" font-weight="normal" text-anchor="start" fill="#1f2328" >핵심 계층(chunker · parser ·</text>
+<text x="1090" y="504.5" font-size="11.5" font-weight="normal" text-anchor="start" fill="#1f2328" >markers · sentences · length)은</text>
+<text x="1090" y="521.0" font-size="11.5" font-weight="normal" text-anchor="start" fill="#1f2328" >표준 라이브러리만 씁니다.</text>
+<text x="1090" y="537.5" font-size="11.5" font-weight="normal" text-anchor="start" fill="#1f2328" >«library» 는 pip extras 로</text>
+<text x="1090" y="554.0" font-size="11.5" font-weight="normal" text-anchor="start" fill="#1f2328" >선택 설치합니다.</text>
+<path d="M1080,520 L980,428.0" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4"/>
+</svg>

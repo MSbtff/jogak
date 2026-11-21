@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1360" height="800" viewBox="0 0 1360 800" font-family="'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR','Noto Sans CJK KR',sans-serif">
+<title>jogak UML 배치 다이어그램</title>
+<defs><marker id="open" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse"><path d="M1,1 L11,6 L1,11" fill="none" stroke="#3d444d" stroke-width="1.4"/></marker></defs>
+<rect width="1360" height="800" fill="#ffffff"/>
+<path d="M40,60 L54,46 L414,46 L400,60 Z" fill="#e9edf1" stroke="#3d444d" stroke-width="1.3"/><path d="M400,60 L414,46 L414,316 L400,330 Z" fill="#d8dee4" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="40" y="60" width="360" height="270" rx="0" fill="#f6f8fa" stroke="#3d444d" stroke-width="1.3"/>
+<text x="52" y="80" font-size="11" font-weight="normal" text-anchor="start" fill="#57606a" >«device»</text>
+<text x="52" y="99" font-size="14.5" font-weight="bold" text-anchor="start" fill="#1f2328" >개발자 PC</text>
+<path d="M60,120 L70,110 L380,110 L370,120 Z" fill="#e9edf1" stroke="#3d444d" stroke-width="1.3"/><path d="M370,120 L380,110 L380,306 L370,316 Z" fill="#d8dee4" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="60" y="120" width="310" height="196" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<text x="72" y="140" font-size="11" font-weight="normal" text-anchor="start" fill="#57606a" >«executionEnvironment»</text>
+<text x="72" y="159" font-size="14.5" font-weight="bold" text-anchor="start" fill="#1f2328" >Python 3.11+ (venv)</text>
+<rect x="80" y="176" width="270" height="60" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<path d="M328,183 L337,183 L342,188 L342,200 L328,200 Z M337,183 L337,188 L342,188" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="90" y="194" font-size="10.5" font-weight="normal" text-anchor="start" fill="#57606a" >«source»</text>
+<text x="90" y="212" font-size="13" font-weight="bold" text-anchor="start" fill="#1f2328" >jogak 작업 트리</text>
+<text x="90" y="228" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >src · tests · benchmark</text>
+<rect x="80" y="246" width="270" height="60" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<path d="M328,253 L337,253 L342,258 L342,270 L328,270 Z M337,253 L337,258 L342,258" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="90" y="264" font-size="10.5" font-weight="normal" text-anchor="start" fill="#57606a" >«file»</text>
+<text x="90" y="282" font-size="13" font-weight="bold" text-anchor="start" fill="#1f2328" >benchmark/results/*.json</text>
+<text x="90" y="298" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >벤치마크 결과</text>
+<path d="M500,60 L514,46 L874,46 L860,60 Z" fill="#e9edf1" stroke="#3d444d" stroke-width="1.3"/><path d="M860,60 L874,46 L874,316 L860,330 Z" fill="#d8dee4" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="500" y="60" width="360" height="270" rx="0" fill="#f6f8fa" stroke="#3d444d" stroke-width="1.3"/>
+<text x="512" y="80" font-size="11" font-weight="normal" text-anchor="start" fill="#57606a" >«node»</text>
+<text x="512" y="99" font-size="14.5" font-weight="bold" text-anchor="start" fill="#1f2328" >GitHub</text>
+<rect x="520" y="116" width="320" height="60" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<path d="M818,123 L827,123 L832,128 L832,140 L818,140 Z M827,123 L827,128 L832,128" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="530" y="134" font-size="10.5" font-weight="normal" text-anchor="start" fill="#57606a" >«repository»</text>
+<text x="530" y="152" font-size="13" font-weight="bold" text-anchor="start" fill="#1f2328" >MSbtff/jogak</text>
+<text x="530" y="168" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >main 브랜치 · v* 태그</text>
+<rect x="520" y="186" width="320" height="60" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<path d="M818,193 L827,193 L832,198 L832,210 L818,210 Z M827,193 L827,198 L832,198" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="530" y="204" font-size="10.5" font-weight="normal" text-anchor="start" fill="#57606a" >«workflow»</text>
+<text x="530" y="222" font-size="13" font-weight="bold" text-anchor="start" fill="#1f2328" >ci.yml</text>
+<text x="530" y="238" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >.github/workflows</text>
+<rect x="520" y="256" width="320" height="60" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<path d="M818,263 L827,263 L832,268 L832,280 L818,280 Z M827,263 L827,268 L832,268" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="530" y="274" font-size="10.5" font-weight="normal" text-anchor="start" fill="#57606a" >«workflow»</text>
+<text x="530" y="292" font-size="13" font-weight="bold" text-anchor="start" fill="#1f2328" >publish.yml</text>
+<text x="530" y="308" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >.github/workflows</text>
+<path d="M960,60 L974,46 L1334,46 L1320,60 Z" fill="#e9edf1" stroke="#3d444d" stroke-width="1.3"/><path d="M1320,60 L1334,46 L1334,316 L1320,330 Z" fill="#d8dee4" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="960" y="60" width="360" height="270" rx="0" fill="#f6f8fa" stroke="#3d444d" stroke-width="1.3"/>
+<text x="972" y="80" font-size="11" font-weight="normal" text-anchor="start" fill="#57606a" >«node»</text>
+<text x="972" y="99" font-size="14.5" font-weight="bold" text-anchor="start" fill="#1f2328" >GitHub Actions 러너</text>
+<text x="972" y="116" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >ubuntu-latest</text>
+<path d="M980,140 L990,130 L1300,130 L1290,140 Z" fill="#e9edf1" stroke="#3d444d" stroke-width="1.3"/><path d="M1290,140 L1300,130 L1300,300 L1290,310 Z" fill="#d8dee4" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="980" y="140" width="310" height="170" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<text x="992" y="160" font-size="11" font-weight="normal" text-anchor="start" fill="#57606a" >«executionEnvironment»</text>
+<text x="992" y="179" font-size="14.5" font-weight="bold" text-anchor="start" fill="#1f2328" >Python 3.11 ~ 3.14</text>
+<text x="992" y="202" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >기본 / 전체 extras 매트릭스</text>
+<rect x="1000" y="214" width="270" height="40" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<path d="M1248,221 L1257,221 L1262,226 L1262,238 L1248,238 Z M1257,221 L1257,226 L1262,226" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="1010" y="232" font-size="10.5" font-weight="normal" text-anchor="start" fill="#57606a" >«wheel»</text>
+<text x="1010" y="250" font-size="13" font-weight="bold" text-anchor="start" fill="#1f2328" >jogak-0.1.0-py3-none-any.whl</text>
+<rect x="1000" y="262" width="270" height="40" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<path d="M1248,269 L1257,269 L1262,274 L1262,286 L1248,286 Z M1257,269 L1257,274 L1262,274" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="1010" y="280" font-size="10.5" font-weight="normal" text-anchor="start" fill="#57606a" >«sdist»</text>
+<text x="1010" y="298" font-size="13" font-weight="bold" text-anchor="start" fill="#1f2328" >jogak-0.1.0.tar.gz</text>
+<path d="M960,460 L974,446 L1334,446 L1320,460 Z" fill="#e9edf1" stroke="#3d444d" stroke-width="1.3"/><path d="M1320,460 L1334,446 L1334,626 L1320,640 Z" fill="#d8dee4" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="960" y="460" width="360" height="180" rx="0" fill="#f6f8fa" stroke="#3d444d" stroke-width="1.3"/>
+<text x="972" y="480" font-size="11" font-weight="normal" text-anchor="start" fill="#57606a" >«node»</text>
+<text x="972" y="499" font-size="14.5" font-weight="bold" text-anchor="start" fill="#1f2328" >PyPI (pypi.org)</text>
+<rect x="980" y="520" width="320" height="60" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<path d="M1278,527 L1287,527 L1292,532 L1292,544 L1278,544 Z M1287,527 L1287,532 L1292,532" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="990" y="538" font-size="10.5" font-weight="normal" text-anchor="start" fill="#57606a" >«package»</text>
+<text x="990" y="556" font-size="13" font-weight="bold" text-anchor="start" fill="#1f2328" >jogak</text>
+<text x="990" y="572" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >wheel · sdist</text>
+<text x="980" y="606" font-size="11.5" font-weight="normal" text-anchor="start" fill="#9a6700" >아직 배포 전 (Trusted Publisher 등록 필요)</text>
+<path d="M40,460 L54,446 L614,446 L600,460 Z" fill="#e9edf1" stroke="#3d444d" stroke-width="1.3"/><path d="M600,460 L614,446 L614,736 L600,750 Z" fill="#d8dee4" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="40" y="460" width="560" height="290" rx="0" fill="#f6f8fa" stroke="#3d444d" stroke-width="1.3"/>
+<text x="52" y="480" font-size="11" font-weight="normal" text-anchor="start" fill="#57606a" >«device»</text>
+<text x="52" y="499" font-size="14.5" font-weight="bold" text-anchor="start" fill="#1f2328" >사용자 서버</text>
+<path d="M60,520 L70,510 L580,510 L570,520 Z" fill="#e9edf1" stroke="#3d444d" stroke-width="1.3"/><path d="M570,520 L580,510 L580,720 L570,730 Z" fill="#d8dee4" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="60" y="520" width="510" height="210" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<text x="72" y="540" font-size="11" font-weight="normal" text-anchor="start" fill="#57606a" >«executionEnvironment»</text>
+<text x="72" y="559" font-size="14.5" font-weight="bold" text-anchor="start" fill="#1f2328" >Python 3.11+</text>
+<rect x="80" y="574" width="220" height="60" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<path d="M278,581 L287,581 L292,586 L292,598 L278,598 Z M287,581 L287,586 L292,586" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="90" y="592" font-size="10.5" font-weight="normal" text-anchor="start" fill="#57606a" >«library»</text>
+<text x="90" y="610" font-size="13" font-weight="bold" text-anchor="start" fill="#1f2328" >jogak</text>
+<text x="90" y="626" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >wheel</text>
+<rect x="320" y="574" width="230" height="60" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<path d="M528,581 L537,581 L542,586 L542,598 L528,598 Z M537,581 L537,586 L542,586" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="330" y="592" font-size="10.5" font-weight="normal" text-anchor="start" fill="#57606a" >«application»</text>
+<text x="330" y="610" font-size="13" font-weight="bold" text-anchor="start" fill="#1f2328" >RAG 애플리케이션</text>
+<text x="330" y="626" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >LangChain 등</text>
+<rect x="80" y="646" width="470" height="60" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<path d="M528,653 L537,653 L542,658 L542,670 L528,670 Z M537,653 L537,658 L542,658" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="90" y="664" font-size="10.5" font-weight="normal" text-anchor="start" fill="#57606a" >«library»</text>
+<text x="90" y="682" font-size="13" font-weight="bold" text-anchor="start" fill="#1f2328" >kiwipiepy · tiktoken · tokenizers · langchain-text-splitters</text>
+<text x="90" y="698" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >선택 설치 (pip extras)</text>
+<path d="M680,560 L694,546 L894,546 L880,560 Z" fill="#e9edf1" stroke="#3d444d" stroke-width="1.3"/><path d="M880,560 L894,546 L894,676 L880,690 Z" fill="#d8dee4" stroke="#3d444d" stroke-width="1.3"/>
+<rect x="680" y="560" width="200" height="130" rx="0" fill="#f6f8fa" stroke="#3d444d" stroke-width="1.3"/>
+<text x="692" y="580" font-size="11" font-weight="normal" text-anchor="start" fill="#57606a" >«node»</text>
+<text x="692" y="599" font-size="14.5" font-weight="bold" text-anchor="start" fill="#1f2328" >벡터 DB</text>
+<rect x="696" y="614" width="168" height="60" rx="0" fill="#ffffff" stroke="#3d444d" stroke-width="1.3"/>
+<path d="M842,621 L851,621 L856,626 L856,638 L842,638 Z M851,621 L851,626 L856,626" fill="#ffffff" stroke="#3d444d" stroke-width="1.1"/>
+<text x="706" y="632" font-size="10.5" font-weight="normal" text-anchor="start" fill="#57606a" >«data»</text>
+<text x="706" y="650" font-size="13" font-weight="bold" text-anchor="start" fill="#1f2328" >청크 임베딩</text>
+<text x="706" y="666" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >path · start/end 메타</text>
+<path d="M400,195 L500,195" fill="none" stroke="#3d444d" stroke-width="1.6"/>
+<rect x="420.24" y="174.5" width="59.52" height="16.5" fill="#ffffff"/>
+<text x="450" y="186" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >git push</text>
+<rect x="423.46" y="202.5" width="53.080000000000005" height="16.5" fill="#ffffff"/>
+<text x="450" y="214" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >«HTTPS»</text>
+<path d="M860,195 L960,195" fill="none" stroke="#3d444d" stroke-width="1.6"/>
+<rect x="871.96" y="174.5" width="76.08" height="16.5" fill="#ffffff"/>
+<text x="910" y="186" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >push · 태그</text>
+<rect x="888.75" y="202.5" width="42.5" height="16.5" fill="#ffffff"/>
+<text x="910" y="214" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >이벤트</text>
+<path d="M1140,330 L1140,460" fill="none" stroke="#3d444d" stroke-width="1.6"/>
+<rect x="956.56" y="372.5" width="175.44" height="16.5" fill="#ffffff"/>
+<text x="960.56" y="384" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >«HTTPS» Trusted Publishing</text>
+<rect x="1000.72" y="392.5" width="131.28" height="16.5" fill="#ffffff"/>
+<text x="1004.72" y="404" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >(OIDC, v* 태그일 때)</text>
+<path d="M600,500 L960,500" fill="none" stroke="#3d444d" stroke-width="1.6"/>
+<rect x="705.16" y="480.5" width="149.68" height="16.5" fill="#ffffff"/>
+<text x="780" y="492" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >pip install jogak[...]</text>
+<rect x="753.46" y="508.5" width="53.080000000000005" height="16.5" fill="#ffffff"/>
+<text x="780" y="520" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >«HTTPS»</text>
+<path d="M600,625 L680,625" fill="none" stroke="#3d444d" stroke-width="1.6"/>
+<rect x="603.34" y="604.5" width="73.32000000000001" height="16.5" fill="#ffffff"/>
+<text x="640" y="616" font-size="11.5" font-weight="normal" text-anchor="middle" fill="#57606a" >저장 · 검색</text>
+<path d="M1250,302 L1250,520" fill="none" stroke="#3d444d" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+<rect x="1252" y="428.5" width="59.52" height="16.5" fill="#ffffff"/>
+<text x="1256" y="440" font-size="11.5" font-weight="normal" text-anchor="start" fill="#57606a" >«deploy»</text>
+</svg>
