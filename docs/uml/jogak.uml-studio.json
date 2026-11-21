@@ -110,7 +110,7 @@
   },
   "m21": {
    "id": "m21",
-   "kind": "commpath",
+   "kind": "dependency",
    "name": "git push",
    "sourceLabel": "",
    "targetLabel": "",
@@ -119,8 +119,8 @@
   },
   "m22": {
    "id": "m22",
-   "kind": "commpath",
-   "name": "Trusted Publishing",
+   "kind": "dependency",
+   "name": "업로드 (Trusted Publishing)",
    "sourceLabel": "",
    "targetLabel": "",
    "fromModelId": "m2",
@@ -137,20 +137,20 @@
   },
   "m24": {
    "id": "m24",
-   "kind": "commpath",
+   "kind": "dependency",
    "name": "pip install jogak",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m3",
-   "toModelId": "m6"
+   "fromModelId": "m6",
+   "toModelId": "m3"
   },
   "m25": {
    "id": "m25",
-   "kind": "commpath",
+   "kind": "dependency",
    "name": "저장 · 검색",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m6",
+   "fromModelId": "m13",
    "toModelId": "m5"
   },
   "m26": {
@@ -342,9 +342,9 @@
     {
      "id": "e2",
      "fill": "#fffbd8",
-     "w": 300,
+     "w": 280,
      "h": 96,
-     "x": 360,
+     "x": 330,
      "y": 40,
      "modelId": "m2",
      "_m": {
@@ -357,7 +357,7 @@
      "fill": "#fffbd8",
      "w": 280,
      "h": 96,
-     "x": 780,
+     "x": 830,
      "y": 40,
      "modelId": "m3",
      "_m": {
@@ -370,7 +370,7 @@
      "fill": "#fffbd8",
      "w": 300,
      "h": 60,
-     "x": 1160,
+     "x": 1220,
      "y": 58,
      "modelId": "m4",
      "_m": {
@@ -609,13 +609,13 @@
     },
     {
      "id": "e24",
-     "from": "e3",
-     "to": "e6",
+     "from": "e6",
+     "to": "e3",
      "modelId": "m24"
     },
     {
      "id": "e25",
-     "from": "e6",
+     "from": "e13",
      "to": "e5",
      "modelId": "m25"
     },
