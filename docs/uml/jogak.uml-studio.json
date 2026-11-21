@@ -3,137 +3,145 @@
  "projectId": "p-jogak-architecture",
  "projectName": "jogak Architecture",
  "models": {
+  "m6": {
+   "id": "m6",
+   "kind": "node",
+   "name": "사용자 서버",
+   "stereotype": "device"
+  },
   "m1": {
    "id": "m1",
-   "kind": "component",
-   "name": "RAG 애플리케이션"
+   "kind": "node",
+   "name": "개발자 PC",
+   "stereotype": "device"
   },
   "m2": {
    "id": "m2",
-   "kind": "component",
-   "name": "cli"
+   "kind": "node",
+   "name": "GitHub (저장소 · Actions)",
+   "stereotype": "node"
   },
   "m3": {
    "id": "m3",
-   "kind": "component",
-   "name": "jogak (공개 API)"
+   "kind": "node",
+   "name": "PyPI",
+   "stereotype": "node"
   },
   "m4": {
    "id": "m4",
-   "kind": "component",
-   "name": "langchain 어댑터"
+   "kind": "artifact",
+   "name": "jogak (wheel · sdist)"
   },
   "m5": {
    "id": "m5",
-   "kind": "component",
-   "name": "chunker"
-  },
-  "m6": {
-   "id": "m6",
-   "kind": "component",
-   "name": "sentences"
+   "kind": "node",
+   "name": "벡터 DB",
+   "stereotype": "node"
   },
   "m7": {
    "id": "m7",
    "kind": "component",
-   "name": "length"
+   "name": "RAG 애플리케이션"
   },
   "m8": {
    "id": "m8",
    "kind": "component",
-   "name": "parser"
+   "name": "«library» langchain-text-splitters"
   },
   "m9": {
    "id": "m9",
    "kind": "component",
-   "name": "markers"
+   "name": "jogak (Python API)"
   },
   "m10": {
    "id": "m10",
    "kind": "component",
-   "name": "«library» langchain-text-splitters"
+   "name": "langchain 어댑터"
   },
   "m11": {
    "id": "m11",
    "kind": "component",
-   "name": "«library» kiwipiepy"
+   "name": "cli"
   },
   "m12": {
    "id": "m12",
    "kind": "component",
-   "name": "«library» tiktoken"
+   "name": "chunker"
   },
   "m13": {
    "id": "m13",
    "kind": "component",
-   "name": "«library» tokenizers"
+   "name": "parser"
   },
   "m14": {
    "id": "m14",
-   "kind": "interfaceball",
-   "name": "CLI"
+   "kind": "component",
+   "name": "sentences"
   },
   "m15": {
    "id": "m15",
-   "kind": "interfaceball",
-   "name": "Python API"
+   "kind": "component",
+   "name": "length"
   },
   "m16": {
    "id": "m16",
-   "kind": "interfaceball",
-   "name": "TextSplitter"
+   "kind": "component",
+   "name": "markers"
   },
   "m17": {
    "id": "m17",
-   "kind": "interfaceball",
-   "name": "SentenceSplitter"
+   "kind": "component",
+   "name": "«library» kiwipiepy"
   },
   "m18": {
    "id": "m18",
-   "kind": "interfaceball",
-   "name": "LengthFn"
+   "kind": "component",
+   "name": "«library» tiktoken · tokenizers"
   },
   "m19": {
    "id": "m19",
-   "kind": "note",
-   "name": "Note1",
-   "text": "핵심 계층(chunker · parser · markers\n· sentences · length)은 표준\n라이브러리만 씁니다.\n선택 의존성은 pip extras 로 설치하고\n함수를 부를 때 import 합니다."
+   "kind": "commpath",
+   "name": "git push",
+   "sourceLabel": "",
+   "targetLabel": "",
+   "fromModelId": "m1",
+   "toModelId": "m2"
   },
   "m20": {
    "id": "m20",
-   "kind": "connector",
-   "name": "",
+   "kind": "commpath",
+   "name": "Trusted Publishing",
    "sourceLabel": "",
    "targetLabel": "",
    "fromModelId": "m2",
-   "toModelId": "m14"
+   "toModelId": "m3"
   },
   "m21": {
    "id": "m21",
-   "kind": "connector",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m3",
-   "toModelId": "m15"
-  },
-  "m22": {
-   "id": "m22",
-   "kind": "connector",
+   "kind": "deploy",
    "name": "",
    "sourceLabel": "",
    "targetLabel": "",
    "fromModelId": "m4",
-   "toModelId": "m16"
+   "toModelId": "m3"
+  },
+  "m22": {
+   "id": "m22",
+   "kind": "commpath",
+   "name": "pip install",
+   "sourceLabel": "",
+   "targetLabel": "",
+   "fromModelId": "m3",
+   "toModelId": "m6"
   },
   "m23": {
    "id": "m23",
-   "kind": "dependency",
-   "name": "«use»",
+   "kind": "commpath",
+   "name": "저장 · 검색",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m1",
-   "toModelId": "m14"
+   "fromModelId": "m6",
+   "toModelId": "m5"
   },
   "m24": {
    "id": "m24",
@@ -141,8 +149,8 @@
    "name": "«use»",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m1",
-   "toModelId": "m15"
+   "fromModelId": "m7",
+   "toModelId": "m9"
   },
   "m25": {
    "id": "m25",
@@ -150,2887 +158,460 @@
    "name": "«use»",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m1",
-   "toModelId": "m16"
+   "fromModelId": "m7",
+   "toModelId": "m10"
   },
   "m26": {
    "id": "m26",
-   "kind": "connector",
+   "kind": "dependency",
    "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m6",
-   "toModelId": "m17"
+   "fromModelId": "m10",
+   "toModelId": "m8"
   },
   "m27": {
    "id": "m27",
    "kind": "dependency",
-   "name": "«use»",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m5",
-   "toModelId": "m17"
-  },
-  "m28": {
-   "id": "m28",
-   "kind": "connector",
    "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m7",
-   "toModelId": "m18"
+   "fromModelId": "m9",
+   "toModelId": "m12"
+  },
+  "m28": {
+   "id": "m28",
+   "kind": "dependency",
+   "name": "",
+   "sourceLabel": "",
+   "targetLabel": "",
+   "fromModelId": "m10",
+   "toModelId": "m12"
   },
   "m29": {
    "id": "m29",
    "kind": "dependency",
-   "name": "«use»",
+   "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m5",
-   "toModelId": "m18"
+   "fromModelId": "m11",
+   "toModelId": "m12"
   },
   "m30": {
    "id": "m30",
    "kind": "dependency",
-   "name": "«use»",
+   "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m2",
-   "toModelId": "m5"
+   "fromModelId": "m12",
+   "toModelId": "m13"
   },
   "m31": {
    "id": "m31",
    "kind": "dependency",
-   "name": "«use»",
+   "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m3",
-   "toModelId": "m5"
+   "fromModelId": "m13",
+   "toModelId": "m16"
   },
   "m32": {
    "id": "m32",
    "kind": "dependency",
-   "name": "«use»",
+   "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m4",
-   "toModelId": "m5"
+   "fromModelId": "m12",
+   "toModelId": "m14"
   },
   "m33": {
    "id": "m33",
    "kind": "dependency",
-   "name": "«use»",
+   "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m5",
-   "toModelId": "m8"
+   "fromModelId": "m12",
+   "toModelId": "m15"
   },
   "m34": {
    "id": "m34",
    "kind": "dependency",
-   "name": "«use»",
+   "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m8",
-   "toModelId": "m9"
+   "fromModelId": "m14",
+   "toModelId": "m17"
   },
   "m35": {
    "id": "m35",
    "kind": "dependency",
-   "name": "«use» import 시 필수",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m4",
-   "toModelId": "m10"
-  },
-  "m36": {
-   "id": "m36",
-   "kind": "dependency",
-   "name": "«use» 선택",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m6",
-   "toModelId": "m11"
-  },
-  "m37": {
-   "id": "m37",
-   "kind": "dependency",
-   "name": "«use» 선택",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m7",
-   "toModelId": "m12"
-  },
-  "m38": {
-   "id": "m38",
-   "kind": "dependency",
-   "name": "«use» 선택",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m7",
-   "toModelId": "m13"
-  },
-  "m39": {
-   "id": "m39",
-   "kind": "notelink",
    "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m19",
-   "toModelId": "m5"
-  },
-  "m41": {
-   "id": "m41",
-   "kind": "node",
-   "name": "개발자 PC",
-   "stereotype": "device"
-  },
-  "m42": {
-   "id": "m42",
-   "kind": "node",
-   "name": "GitHub",
-   "stereotype": "node"
-  },
-  "m43": {
-   "id": "m43",
-   "kind": "node",
-   "name": "GitHub Actions 러너",
-   "stereotype": "executionEnvironment"
-  },
-  "m44": {
-   "id": "m44",
-   "kind": "node",
-   "name": "벡터 DB",
-   "stereotype": "node"
-  },
-  "m45": {
-   "id": "m45",
-   "kind": "node",
-   "name": "사용자 서버",
-   "stereotype": "device"
-  },
-  "m46": {
-   "id": "m46",
-   "kind": "node",
-   "name": "PyPI",
-   "stereotype": "node"
-  },
-  "m47": {
-   "id": "m47",
-   "kind": "artifact",
-   "name": "jogak 작업 트리"
-  },
-  "m48": {
-   "id": "m48",
-   "kind": "artifact",
-   "name": "ci.yml · publish.yml"
-  },
-  "m49": {
-   "id": "m49",
-   "kind": "artifact",
-   "name": "jogak-0.1.0.whl"
-  },
-  "m50": {
-   "id": "m50",
-   "kind": "artifact",
-   "name": "청크 임베딩 + path"
-  },
-  "m51": {
-   "id": "m51",
-   "kind": "artifact",
-   "name": "jogak[extras]"
-  },
-  "m52": {
-   "id": "m52",
-   "kind": "artifact",
-   "name": "RAG 애플리케이션"
-  },
-  "m53": {
-   "id": "m53",
-   "kind": "artifact",
-   "name": "jogak (wheel · sdist)"
-  },
-  "m54": {
-   "id": "m54",
-   "kind": "note",
-   "name": "Note1",
-   "text": "아직 배포 전입니다.\nPyPI Trusted Publisher 등록 필요"
-  },
-  "m55": {
-   "id": "m55",
-   "kind": "commpath",
-   "name": "git push (HTTPS)",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m41",
-   "toModelId": "m42"
-  },
-  "m56": {
-   "id": "m56",
-   "kind": "commpath",
-   "name": "push · tag 이벤트",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m42",
-   "toModelId": "m43"
-  },
-  "m57": {
-   "id": "m57",
-   "kind": "commpath",
-   "name": "Trusted Publishing (OIDC)",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m43",
-   "toModelId": "m46"
-  },
-  "m58": {
-   "id": "m58",
-   "kind": "commpath",
-   "name": "pip install (HTTPS)",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m45",
-   "toModelId": "m46"
-  },
-  "m59": {
-   "id": "m59",
-   "kind": "commpath",
-   "name": "저장 · 검색",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m45",
-   "toModelId": "m44"
-  },
-  "m60": {
-   "id": "m60",
-   "kind": "deploy",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m47",
-   "toModelId": "m41"
-  },
-  "m61": {
-   "id": "m61",
-   "kind": "deploy",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m48",
-   "toModelId": "m42"
-  },
-  "m62": {
-   "id": "m62",
-   "kind": "deploy",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m49",
-   "toModelId": "m43"
-  },
-  "m63": {
-   "id": "m63",
-   "kind": "deploy",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m50",
-   "toModelId": "m44"
-  },
-  "m64": {
-   "id": "m64",
-   "kind": "deploy",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m51",
-   "toModelId": "m45"
-  },
-  "m65": {
-   "id": "m65",
-   "kind": "deploy",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m52",
-   "toModelId": "m45"
-  },
-  "m66": {
-   "id": "m66",
-   "kind": "deploy",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m53",
-   "toModelId": "m46"
-  },
-  "m67": {
-   "id": "m67",
-   "kind": "notelink",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m54",
-   "toModelId": "m46"
-  },
-  "m69": {
-   "id": "m69",
-   "kind": "class",
-   "name": "TextSplitter",
-   "stereotype": "LangChain",
-   "isAbstract": true,
-   "attributes": [],
-   "operations": [
-    "+ split_text(text: str): list[str] {abstract}"
-   ]
-  },
-  "m70": {
-   "id": "m70",
-   "kind": "class",
-   "name": "JogakTextSplitter",
-   "stereotype": "",
-   "attributes": [
-    "- _chunker: Chunker",
-    "- _add_context: bool"
-   ],
-   "operations": [
-    "+ split_text(text: str): list[str]",
-    "+ create_documents(texts, metadatas): list[Document]",
-    "+ split_documents(documents): list[Document]"
-   ]
-  },
-  "m71": {
-   "id": "m71",
-   "kind": "class",
-   "name": "Chunker",
-   "stereotype": "",
-   "attributes": [
-    "+ max_size: int",
-    "+ length_fn: LengthFn",
-    "+ merge: bool",
-    "+ item_label_chars: int",
-    "- _split_sentences: SentenceSplitter"
-   ],
-   "operations": [
-    "+ chunk(text: str, title: str): list[Chunk]",
-    "- _emit(node, src, path, out): void",
-    "- _split_long(src, s, e, path, out): void",
-    "- _hard_split(src, s, e): list[tuple]"
-   ]
-  },
-  "m72": {
-   "id": "m72",
-   "kind": "interface",
-   "name": "LengthFn",
-   "operations": [
-    "+ __call__(text: str): int"
-   ]
-  },
-  "m73": {
-   "id": "m73",
-   "kind": "interface",
-   "name": "SentenceSplitter",
-   "operations": [
-    "+ __call__(text: str, start: int, end: int): list[tuple[int, int]]"
-   ]
-  },
-  "m74": {
-   "id": "m74",
-   "kind": "class",
-   "name": "Chunk",
-   "stereotype": "dataclass",
-   "attributes": [
-    "+ text: str",
-    "+ start: int",
-    "+ end: int",
-    "+ path: tuple[str, ...]",
-    "+ index: int"
-   ],
-   "operations": [
-    "+ context(): str",
-    "+ embed_text(): str",
-    "+ to_dict(): dict"
-   ]
-  },
-  "m75": {
-   "id": "m75",
-   "kind": "class",
-   "name": "_Parser",
-   "stereotype": "",
-   "attributes": [
-    "- text: str",
-    "- root: Node",
-    "- stack: list[Node]",
-    "- last_article: int"
-   ],
-   "operations": [
-    "+ parse(): Node",
-    "- _line(s, offset, line_end): void",
-    "- _push_heading(m, offset): Node",
-    "- _push_item(m, offset): bool"
-   ]
-  },
-  "m76": {
-   "id": "m76",
-   "kind": "class",
-   "name": "Node",
-   "stereotype": "dataclass",
-   "attributes": [
-    "+ kind: str",
-    "+ type: str",
-    "+ label: str",
-    "+ start: int",
-    "+ body_start: int",
-    "+ rank: int",
-    "+ ordinal: int | None",
-    "+ content_end: int",
-    "+ children: list[Node]",
-    "+ parent: Node | None"
-   ],
-   "operations": [
-    "+ end(): int",
-    "+ own_end(): int",
-    "+ walk(): Iterator[Node]",
-    "+ to_dict(source): dict"
-   ]
-  },
-  "m77": {
-   "id": "m77",
-   "kind": "class",
-   "name": "Marker",
-   "stereotype": "dataclass",
-   "attributes": [
-    "+ kind: str",
-    "+ type: str",
-    "+ label: str",
-    "+ end: int",
-    "+ rank: int",
-    "+ ordinal: int | None"
-   ],
-   "operations": []
-  },
-  "m78": {
-   "id": "m78",
-   "kind": "generalization",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m70",
-   "toModelId": "m69"
-  },
-  "m79": {
-   "id": "m79",
-   "kind": "composition",
-   "name": "위임",
-   "sourceLabel": "1",
-   "targetLabel": "",
-   "fromModelId": "m71",
-   "toModelId": "m70"
-  },
-  "m80": {
-   "id": "m80",
-   "kind": "directed",
-   "name": "length_fn",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m71",
-   "toModelId": "m72"
-  },
-  "m81": {
-   "id": "m81",
-   "kind": "directed",
-   "name": "_split_sentences",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m71",
-   "toModelId": "m73"
-  },
-  "m82": {
-   "id": "m82",
-   "kind": "dependency",
-   "name": "«create»",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m71",
-   "toModelId": "m74"
-  },
-  "m83": {
-   "id": "m83",
-   "kind": "dependency",
-   "name": "«use» parse()",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m71",
-   "toModelId": "m75"
-  },
-  "m84": {
-   "id": "m84",
-   "kind": "dependency",
-   "name": "«use» 트리 순회",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m71",
-   "toModelId": "m76"
-  },
-  "m85": {
-   "id": "m85",
-   "kind": "directed",
-   "name": "root",
-   "sourceLabel": "",
-   "targetLabel": "1",
-   "fromModelId": "m75",
-   "toModelId": "m76"
-  },
-  "m86": {
-   "id": "m86",
-   "kind": "dependency",
-   "name": "«use» match_*()",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m75",
-   "toModelId": "m77"
-  },
-  "m94": {
-   "id": "m94",
-   "kind": "frame",
-   "name": "Chunker.chunk()"
-  },
-  "m88": {
-   "id": "m88",
-   "kind": "lifeline",
-   "name": "사용자",
-   "isActor": true
-  },
-  "m89": {
-   "id": "m89",
-   "kind": "lifeline",
-   "name": ":Chunker"
-  },
-  "m90": {
-   "id": "m90",
-   "kind": "lifeline",
-   "name": ":_Parser"
-  },
-  "m91": {
-   "id": "m91",
-   "kind": "lifeline",
-   "name": "markers"
-  },
-  "m92": {
-   "id": "m92",
-   "kind": "lifeline",
-   "name": ":SentenceSplitter"
-  },
-  "m93": {
-   "id": "m93",
-   "kind": "lifeline",
-   "name": "length_fn"
-  },
-  "m95": {
-   "id": "m95",
-   "kind": "fragment",
-   "name": "Fragment1",
-   "operator": "loop",
-   "condition": "[빈 줄이 아닌 줄마다]",
-   "operands": []
-  },
-  "m96": {
-   "id": "m96",
-   "kind": "fragment",
-   "name": "Fragment2",
-   "operator": "alt",
-   "condition": "",
-   "operands": [
-    "[제목: 장 · 조 · 부칙 …]",
-    "[제목 아님]"
-   ]
-  },
-  "m97": {
-   "id": "m97",
-   "kind": "fragment",
-   "name": "Fragment3",
-   "operator": "loop",
-   "condition": "[트리를 위에서 아래로]",
-   "operands": []
-  },
-  "m98": {
-   "id": "m98",
-   "kind": "fragment",
-   "name": "Fragment4",
-   "operator": "alt",
-   "condition": "",
-   "operands": [
-    "[크기 안에 들어감]",
-    "[너무 큼]"
-   ]
-  },
-  "m99": {
-   "id": "m99",
-   "kind": "msg-sync",
-   "name": "chunk(text, title)",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m88",
-   "toModelId": "m89"
-  },
-  "m100": {
-   "id": "m100",
-   "kind": "msg-sync",
-   "name": "parse(text)",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m89",
-   "toModelId": "m90"
-  },
-  "m101": {
-   "id": "m101",
-   "kind": "msg-sync",
-   "name": "match_heading(line, last_article)",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m90",
-   "toModelId": "m91"
-  },
-  "m102": {
-   "id": "m102",
-   "kind": "msg-reply",
-   "name": "Marker | None",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m91",
-   "toModelId": "m90"
-  },
-  "m103": {
-   "id": "m103",
-   "kind": "msg-sync",
-   "name": "_push_heading(m)",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m90",
-   "toModelId": "m90"
-  },
-  "m104": {
-   "id": "m104",
-   "kind": "msg-sync",
-   "name": "match_item(line)",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m90",
-   "toModelId": "m91"
-  },
-  "m105": {
-   "id": "m105",
-   "kind": "msg-reply",
-   "name": "Marker | None",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m91",
-   "toModelId": "m90"
-  },
-  "m106": {
-   "id": "m106",
-   "kind": "msg-sync",
-   "name": "_push_item(m) 또는 본문 연장",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m90",
-   "toModelId": "m90"
-  },
-  "m107": {
-   "id": "m107",
-   "kind": "msg-reply",
-   "name": "root: Node",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m90",
-   "toModelId": "m89"
-  },
-  "m108": {
-   "id": "m108",
-   "kind": "msg-sync",
-   "name": "_emit(root, path)",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m89",
-   "toModelId": "m89"
-  },
-  "m109": {
-   "id": "m109",
-   "kind": "msg-sync",
-   "name": "노드 크기 측정",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m89",
-   "toModelId": "m93"
-  },
-  "m110": {
-   "id": "m110",
-   "kind": "msg-reply",
-   "name": "size",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m93",
-   "toModelId": "m89"
-  },
-  "m111": {
-   "id": "m111",
-   "kind": "msg-sync",
-   "name": "(start, end, path) 기록",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m89",
-   "toModelId": "m89"
-  },
-  "m112": {
-   "id": "m112",
-   "kind": "msg-sync",
-   "name": "문장 구간 분리",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m89",
-   "toModelId": "m92"
-  },
-  "m113": {
-   "id": "m113",
-   "kind": "msg-reply",
-   "name": "[(start, end), …]",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m92",
-   "toModelId": "m89"
-  },
-  "m114": {
-   "id": "m114",
-   "kind": "msg-reply",
-   "name": "list[Chunk]",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m89",
-   "toModelId": "m88"
-  },
-  "m125": {
-   "id": "m125",
-   "kind": "expansionregion",
-   "name": "단위마다",
-   "expansionMode": "iterative"
-  },
-  "m126": {
-   "id": "m126",
-   "kind": "expansioninput",
-   "name": "단위"
-  },
-  "m116": {
-   "id": "m116",
-   "kind": "initial",
-   "name": "Start"
-  },
-  "m117": {
-   "id": "m117",
-   "kind": "decision",
-   "name": "통째로 max_size 안?"
-  },
-  "m118": {
-   "id": "m118",
-   "kind": "action",
-   "name": "노드 전체를 청크로 기록"
-  },
-  "m119": {
-   "id": "m119",
-   "kind": "final",
-   "name": "End1"
-  },
-  "m120": {
-   "id": "m120",
-   "kind": "action",
-   "name": "하위 경로에 노드 이름 추가"
-  },
-  "m121": {
-   "id": "m121",
-   "kind": "decision",
-   "name": "자기 본문이 머리말뿐?"
-  },
-  "m122": {
-   "id": "m122",
-   "kind": "action",
-   "name": "자기 본문은 따로 자르지 않음"
-  },
-  "m123": {
-   "id": "m123",
-   "kind": "merge",
-   "name": "Merge1"
-  },
-  "m124": {
-   "id": "m124",
-   "kind": "action",
-   "name": "단위 = [자기 본문, 자식…]"
-  },
-  "m127": {
-   "id": "m127",
-   "kind": "decision",
-   "name": "크기 초과 또는 더 내려감?"
-  },
-  "m128": {
-   "id": "m128",
-   "kind": "action",
-   "name": "지금까지 묶은 그룹 기록"
-  },
-  "m129": {
-   "id": "m129",
-   "kind": "decision",
-   "name": "자기 본문인가?"
-  },
-  "m130": {
-   "id": "m130",
-   "kind": "action",
-   "name": "_split_long (문장 → 강제 분리)"
-  },
-  "m131": {
-   "id": "m131",
-   "kind": "action",
-   "name": "자식에 _emit 재귀"
-  },
-  "m132": {
-   "id": "m132",
-   "kind": "decision",
-   "name": "그룹에 더해도 크기 안?"
-  },
-  "m133": {
-   "id": "m133",
-   "kind": "action",
-   "name": "현재 그룹에 추가"
-  },
-  "m134": {
-   "id": "m134",
-   "kind": "action",
-   "name": "그룹 기록 후 새 그룹 시작"
-  },
-  "m135": {
-   "id": "m135",
-   "kind": "merge",
-   "name": "Merge2"
-  },
-  "m136": {
-   "id": "m136",
-   "kind": "flowfinal",
-   "name": "FlowFinal"
-  },
-  "m137": {
-   "id": "m137",
-   "kind": "action",
-   "name": "마지막 그룹 기록"
-  },
-  "m138": {
-   "id": "m138",
-   "kind": "final",
-   "name": "End2"
-  },
-  "m139": {
-   "id": "m139",
-   "kind": "controlflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m116",
-   "toModelId": "m117"
-  },
-  "m140": {
-   "id": "m140",
-   "kind": "controlflow",
-   "name": "[예]",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m117",
-   "toModelId": "m118"
-  },
-  "m141": {
-   "id": "m141",
-   "kind": "controlflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m118",
-   "toModelId": "m119"
-  },
-  "m142": {
-   "id": "m142",
-   "kind": "controlflow",
-   "name": "[아니오]",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m117",
-   "toModelId": "m120"
-  },
-  "m143": {
-   "id": "m143",
-   "kind": "controlflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m120",
-   "toModelId": "m121"
-  },
-  "m144": {
-   "id": "m144",
-   "kind": "controlflow",
-   "name": "[예]",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m121",
-   "toModelId": "m122"
-  },
-  "m145": {
-   "id": "m145",
-   "kind": "controlflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m122",
-   "toModelId": "m123"
-  },
-  "m146": {
-   "id": "m146",
-   "kind": "controlflow",
-   "name": "[아니오]",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m121",
-   "toModelId": "m123"
-  },
-  "m147": {
-   "id": "m147",
-   "kind": "controlflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m123",
-   "toModelId": "m124"
-  },
-  "m148": {
-   "id": "m148",
-   "kind": "objectflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m124",
-   "toModelId": "m126"
-  },
-  "m149": {
-   "id": "m149",
-   "kind": "objectflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m126",
-   "toModelId": "m127"
-  },
-  "m150": {
-   "id": "m150",
-   "kind": "controlflow",
-   "name": "[예]",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m127",
-   "toModelId": "m128"
-  },
-  "m151": {
-   "id": "m151",
-   "kind": "controlflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m128",
-   "toModelId": "m129"
-  },
-  "m152": {
-   "id": "m152",
-   "kind": "controlflow",
-   "name": "[예]",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m129",
-   "toModelId": "m130"
-  },
-  "m153": {
-   "id": "m153",
-   "kind": "controlflow",
-   "name": "[아니오]",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m129",
-   "toModelId": "m131"
-  },
-  "m154": {
-   "id": "m154",
-   "kind": "controlflow",
-   "name": "[아니오]",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m127",
-   "toModelId": "m132"
-  },
-  "m155": {
-   "id": "m155",
-   "kind": "controlflow",
-   "name": "[예]",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m132",
-   "toModelId": "m133"
-  },
-  "m156": {
-   "id": "m156",
-   "kind": "controlflow",
-   "name": "[아니오]",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m132",
-   "toModelId": "m134"
-  },
-  "m157": {
-   "id": "m157",
-   "kind": "controlflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m130",
-   "toModelId": "m135"
-  },
-  "m158": {
-   "id": "m158",
-   "kind": "controlflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m131",
-   "toModelId": "m135"
-  },
-  "m159": {
-   "id": "m159",
-   "kind": "controlflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m133",
-   "toModelId": "m135"
-  },
-  "m160": {
-   "id": "m160",
-   "kind": "controlflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m134",
-   "toModelId": "m135"
-  },
-  "m161": {
-   "id": "m161",
-   "kind": "controlflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m135",
-   "toModelId": "m136"
-  },
-  "m162": {
-   "id": "m162",
-   "kind": "controlflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m125",
-   "toModelId": "m137"
-  },
-  "m163": {
-   "id": "m163",
-   "kind": "controlflow",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m137",
-   "toModelId": "m138"
+   "fromModelId": "m15",
+   "toModelId": "m18"
   }
  },
  "diagrams": [
   {
-   "id": "e40",
-   "type": "component",
-   "name": "jogak 컴포넌트",
+   "id": "e36",
+   "type": "deployment",
+   "name": "jogak 시스템 아키텍처",
    "elements": [
     {
+     "id": "e6",
+     "fill": "#fbfaf2",
+     "w": 1000,
+     "h": 580,
+     "x": 40,
+     "y": 240,
+     "modelId": "m6",
+     "_m": {
+      "minW": 128,
+      "minH": 80
+     }
+    },
+    {
      "id": "e1",
-     "fill": "#e8f1fd",
-     "w": 200,
-     "h": 60,
-     "x": 430,
-     "y": 20,
+     "fill": "#fffbd8",
+     "w": 220,
+     "h": 96,
+     "x": 40,
+     "y": 40,
      "modelId": "m1",
      "_m": {
-      "minW": 160,
-      "minH": 56
+      "minW": 128,
+      "minH": 80
      }
     },
     {
      "id": "e2",
      "fill": "#fffbd8",
-     "w": 200,
-     "h": 60,
-     "x": 100,
-     "y": 250,
+     "w": 260,
+     "h": 96,
+     "x": 380,
+     "y": 40,
      "modelId": "m2",
      "_m": {
-      "minW": 128,
-      "minH": 56
+      "minW": 200,
+      "minH": 80
      }
     },
     {
      "id": "e3",
      "fill": "#fffbd8",
-     "w": 200,
-     "h": 60,
-     "x": 430,
-     "y": 250,
+     "w": 220,
+     "h": 96,
+     "x": 760,
+     "y": 40,
      "modelId": "m3",
      "_m": {
-      "minW": 152,
-      "minH": 56
+      "minW": 128,
+      "minH": 80
      }
     },
     {
      "id": "e4",
      "fill": "#fffbd8",
-     "w": 200,
+     "w": 230,
      "h": 60,
-     "x": 760,
-     "y": 250,
+     "x": 1080,
+     "y": 58,
      "modelId": "m4",
      "_m": {
-      "minW": 160,
+      "minW": 168,
       "minH": 56
      }
     },
     {
      "id": "e5",
      "fill": "#fffbd8",
-     "w": 200,
-     "h": 60,
-     "x": 430,
-     "y": 380,
+     "w": 220,
+     "h": 96,
+     "x": 1110,
+     "y": 500,
      "modelId": "m5",
      "_m": {
       "minW": 128,
-      "minH": 56
-     }
-    },
-    {
-     "id": "e6",
-     "fill": "#fffbd8",
-     "w": 200,
-     "h": 60,
-     "x": 760,
-     "y": 380,
-     "modelId": "m6",
-     "_m": {
-      "minW": 128,
-      "minH": 56
+      "minH": 80
      }
     },
     {
      "id": "e7",
-     "fill": "#fffbd8",
-     "w": 200,
-     "h": 60,
-     "x": 760,
-     "y": 510,
+     "fill": "#e8f1fd",
+     "w": 240,
+     "h": 56,
+     "x": 80,
+     "y": 280,
+     "parentId": "e6",
      "modelId": "m7",
      "_m": {
-      "minW": 128,
+      "minW": 160,
       "minH": 56
      }
     },
     {
      "id": "e8",
-     "fill": "#fffbd8",
-     "w": 200,
-     "h": 60,
-     "x": 430,
-     "y": 510,
-     "modelId": "m8",
-     "_m": {
-      "minW": 128,
-      "minH": 56
-     }
-    },
-    {
-     "id": "e9",
-     "fill": "#fffbd8",
-     "w": 200,
-     "h": 60,
-     "x": 430,
-     "y": 640,
-     "modelId": "m9",
-     "_m": {
-      "minW": 128,
-      "minH": 56
-     }
-    },
-    {
-     "id": "e10",
      "fill": "#fff3d6",
-     "w": 270,
-     "h": 60,
-     "x": 1090,
-     "y": 250,
-     "modelId": "m10",
+     "w": 280,
+     "h": 56,
+     "x": 394,
+     "y": 280,
+     "parentId": "e6",
+     "modelId": "m8",
      "_m": {
       "minW": 264,
       "minH": 56
      }
     },
     {
-     "id": "e11",
-     "fill": "#fff3d6",
-     "w": 270,
-     "h": 60,
-     "x": 1090,
-     "y": 380,
-     "modelId": "m11",
+     "id": "e9",
+     "fill": "#fffbd8",
+     "w": 240,
+     "h": 56,
+     "x": 80,
+     "y": 390,
+     "parentId": "e6",
+     "modelId": "m9",
      "_m": {
       "minW": 176,
       "minH": 56
      }
     },
     {
+     "id": "e10",
+     "fill": "#fffbd8",
+     "w": 240,
+     "h": 56,
+     "x": 414,
+     "y": 390,
+     "parentId": "e6",
+     "modelId": "m10",
+     "_m": {
+      "minW": 160,
+      "minH": 56
+     }
+    },
+    {
+     "id": "e11",
+     "fill": "#fffbd8",
+     "w": 240,
+     "h": 56,
+     "x": 748,
+     "y": 390,
+     "parentId": "e6",
+     "modelId": "m11",
+     "_m": {
+      "minW": 128,
+      "minH": 56
+     }
+    },
+    {
      "id": "e12",
-     "fill": "#fff3d6",
-     "w": 270,
-     "h": 60,
-     "x": 1090,
-     "y": 510,
+     "fill": "#fffbd8",
+     "w": 240,
+     "h": 56,
+     "x": 80,
+     "y": 500,
+     "parentId": "e6",
      "modelId": "m12",
      "_m": {
-      "minW": 168,
+      "minW": 128,
       "minH": 56
      }
     },
     {
      "id": "e13",
-     "fill": "#fff3d6",
-     "w": 270,
-     "h": 60,
-     "x": 1090,
-     "y": 640,
+     "fill": "#fffbd8",
+     "w": 240,
+     "h": 56,
+     "x": 80,
+     "y": 620,
+     "parentId": "e6",
      "modelId": "m13",
      "_m": {
-      "minW": 184,
+      "minW": 128,
       "minH": 56
      }
     },
     {
      "id": "e14",
      "fill": "#fffbd8",
-     "w": 20,
-     "h": 20,
-     "x": 190,
-     "y": 140,
+     "w": 240,
+     "h": 56,
+     "x": 414,
+     "y": 620,
+     "parentId": "e6",
      "modelId": "m14",
      "_m": {
-      "minW": 20,
-      "minH": 20
+      "minW": 128,
+      "minH": 56
      }
     },
     {
      "id": "e15",
      "fill": "#fffbd8",
-     "w": 20,
-     "h": 20,
-     "x": 520,
-     "y": 140,
+     "w": 240,
+     "h": 56,
+     "x": 748,
+     "y": 620,
+     "parentId": "e6",
      "modelId": "m15",
      "_m": {
-      "minW": 20,
-      "minH": 20
+      "minW": 128,
+      "minH": 56
      }
     },
     {
      "id": "e16",
      "fill": "#fffbd8",
-     "w": 20,
-     "h": 20,
-     "x": 850,
-     "y": 140,
+     "w": 240,
+     "h": 56,
+     "x": 80,
+     "y": 740,
+     "parentId": "e6",
      "modelId": "m16",
      "_m": {
-      "minW": 20,
-      "minH": 20
+      "minW": 128,
+      "minH": 56
      }
     },
     {
      "id": "e17",
-     "fill": "#fffbd8",
-     "w": 20,
-     "h": 20,
-     "x": 685,
-     "y": 400,
+     "fill": "#fff3d6",
+     "w": 240,
+     "h": 56,
+     "x": 414,
+     "y": 740,
+     "parentId": "e6",
      "modelId": "m17",
      "_m": {
-      "minW": 20,
-      "minH": 20
+      "minW": 176,
+      "minH": 56
      }
     },
     {
      "id": "e18",
-     "fill": "#fffbd8",
-     "w": 20,
-     "h": 20,
-     "x": 685,
-     "y": 530,
+     "fill": "#fff3d6",
+     "w": 260,
+     "h": 56,
+     "x": 748,
+     "y": 740,
+     "parentId": "e6",
      "modelId": "m18",
      "_m": {
-      "minW": 20,
-      "minH": 20
-     }
-    },
-    {
-     "id": "e19",
-     "fill": "#fffbd8",
-     "w": 250,
-     "h": 104,
-     "x": 100,
-     "y": 510,
-     "modelId": "m19",
-     "_m": {
-      "minW": 224,
-      "minH": 96,
-      "lines": [
-       "핵심 계층(chunker · parser · markers",
-       "· sentences · length)은 표준",
-       "라이브러리만 씁니다.",
-       "선택 의존성은 pip extras 로 설치하고",
-       "함수를 부를 때 import 합니다."
-      ]
+      "minW": 248,
+      "minH": 56
      }
     }
    ],
    "relations": [
     {
+     "id": "e19",
+     "from": "e1",
+     "to": "e2",
+     "modelId": "m19"
+    },
+    {
      "id": "e20",
      "from": "e2",
-     "to": "e14",
+     "to": "e3",
      "modelId": "m20"
     },
     {
      "id": "e21",
-     "from": "e3",
-     "to": "e15",
+     "from": "e4",
+     "to": "e3",
      "modelId": "m21"
     },
     {
      "id": "e22",
-     "from": "e4",
-     "to": "e16",
+     "from": "e3",
+     "to": "e6",
      "modelId": "m22"
     },
     {
      "id": "e23",
-     "from": "e1",
-     "to": "e14",
+     "from": "e6",
+     "to": "e5",
      "modelId": "m23"
     },
     {
      "id": "e24",
-     "from": "e1",
-     "to": "e15",
+     "from": "e7",
+     "to": "e9",
      "modelId": "m24"
     },
     {
      "id": "e25",
-     "from": "e1",
-     "to": "e16",
+     "from": "e7",
+     "to": "e10",
      "modelId": "m25"
     },
     {
      "id": "e26",
-     "from": "e6",
-     "to": "e17",
+     "from": "e10",
+     "to": "e8",
      "modelId": "m26"
     },
     {
      "id": "e27",
-     "from": "e5",
-     "to": "e17",
+     "from": "e9",
+     "to": "e12",
      "modelId": "m27"
     },
     {
      "id": "e28",
-     "from": "e7",
-     "to": "e18",
+     "from": "e10",
+     "to": "e12",
      "modelId": "m28"
     },
     {
      "id": "e29",
-     "from": "e5",
-     "to": "e18",
+     "from": "e11",
+     "to": "e12",
      "modelId": "m29"
     },
     {
      "id": "e30",
-     "from": "e2",
-     "to": "e5",
+     "from": "e12",
+     "to": "e13",
      "modelId": "m30"
     },
     {
      "id": "e31",
-     "from": "e3",
-     "to": "e5",
+     "from": "e13",
+     "to": "e16",
      "modelId": "m31"
     },
     {
      "id": "e32",
-     "from": "e4",
-     "to": "e5",
+     "from": "e12",
+     "to": "e14",
      "modelId": "m32"
     },
     {
      "id": "e33",
-     "from": "e5",
-     "to": "e8",
+     "from": "e12",
+     "to": "e15",
      "modelId": "m33"
     },
     {
      "id": "e34",
-     "from": "e8",
-     "to": "e9",
+     "from": "e14",
+     "to": "e17",
      "modelId": "m34"
     },
     {
      "id": "e35",
-     "from": "e4",
-     "to": "e10",
+     "from": "e15",
+     "to": "e18",
      "modelId": "m35"
-    },
-    {
-     "id": "e36",
-     "from": "e6",
-     "to": "e11",
-     "modelId": "m36"
-    },
-    {
-     "id": "e37",
-     "from": "e7",
-     "to": "e12",
-     "modelId": "m37"
-    },
-    {
-     "id": "e38",
-     "from": "e7",
-     "to": "e13",
-     "modelId": "m38"
-    },
-    {
-     "id": "e39",
-     "from": "e19",
-     "to": "e5",
-     "modelId": "m39"
-    }
-   ]
-  },
-  {
-   "id": "e68",
-   "type": "deployment",
-   "name": "jogak 배치",
-   "elements": [
-    {
-     "id": "e41",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 100,
-     "x": 60,
-     "y": 60,
-     "modelId": "m41",
-     "_m": {
-      "minW": 128,
-      "minH": 80
-     }
-    },
-    {
-     "id": "e42",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 100,
-     "x": 440,
-     "y": 60,
-     "modelId": "m42",
-     "_m": {
-      "minW": 128,
-      "minH": 80
-     }
-    },
-    {
-     "id": "e43",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 100,
-     "x": 820,
-     "y": 60,
-     "modelId": "m43",
-     "_m": {
-      "minW": 184,
-      "minH": 80
-     }
-    },
-    {
-     "id": "e44",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 100,
-     "x": 60,
-     "y": 400,
-     "modelId": "m44",
-     "_m": {
-      "minW": 128,
-      "minH": 80
-     }
-    },
-    {
-     "id": "e45",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 100,
-     "x": 440,
-     "y": 400,
-     "modelId": "m45",
-     "_m": {
-      "minW": 128,
-      "minH": 80
-     }
-    },
-    {
-     "id": "e46",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 100,
-     "x": 820,
-     "y": 400,
-     "modelId": "m46",
-     "_m": {
-      "minW": 128,
-      "minH": 80
-     }
-    },
-    {
-     "id": "e47",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 60,
-     "x": 60,
-     "y": 230,
-     "modelId": "m47",
-     "_m": {
-      "minW": 136,
-      "minH": 56
-     }
-    },
-    {
-     "id": "e48",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 60,
-     "x": 440,
-     "y": 230,
-     "modelId": "m48",
-     "_m": {
-      "minW": 168,
-      "minH": 56
-     }
-    },
-    {
-     "id": "e49",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 60,
-     "x": 1110,
-     "y": 80,
-     "modelId": "m49",
-     "_m": {
-      "minW": 144,
-      "minH": 56
-     }
-    },
-    {
-     "id": "e50",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 60,
-     "x": 60,
-     "y": 570,
-     "modelId": "m50",
-     "_m": {
-      "minW": 152,
-      "minH": 56
-     }
-    },
-    {
-     "id": "e51",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 60,
-     "x": 330,
-     "y": 570,
-     "modelId": "m51",
-     "_m": {
-      "minW": 128,
-      "minH": 56
-     }
-    },
-    {
-     "id": "e52",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 60,
-     "x": 580,
-     "y": 570,
-     "modelId": "m52",
-     "_m": {
-      "minW": 144,
-      "minH": 56
-     }
-    },
-    {
-     "id": "e53",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 60,
-     "x": 830,
-     "y": 570,
-     "modelId": "m53",
-     "_m": {
-      "minW": 168,
-      "minH": 56
-     }
-    },
-    {
-     "id": "e54",
-     "fill": "#fffbd8",
-     "w": 240,
-     "h": 56,
-     "x": 1110,
-     "y": 420,
-     "modelId": "m54",
-     "_m": {
-      "minW": 208,
-      "minH": 48,
-      "lines": [
-       "아직 배포 전입니다.",
-       "PyPI Trusted Publisher 등록 필요"
-      ]
-     }
-    }
-   ],
-   "relations": [
-    {
-     "id": "e55",
-     "from": "e41",
-     "to": "e42",
-     "modelId": "m55"
-    },
-    {
-     "id": "e56",
-     "from": "e42",
-     "to": "e43",
-     "modelId": "m56"
-    },
-    {
-     "id": "e57",
-     "from": "e43",
-     "to": "e46",
-     "modelId": "m57"
-    },
-    {
-     "id": "e58",
-     "from": "e45",
-     "to": "e46",
-     "modelId": "m58"
-    },
-    {
-     "id": "e59",
-     "from": "e45",
-     "to": "e44",
-     "modelId": "m59"
-    },
-    {
-     "id": "e60",
-     "from": "e47",
-     "to": "e41",
-     "modelId": "m60"
-    },
-    {
-     "id": "e61",
-     "from": "e48",
-     "to": "e42",
-     "modelId": "m61"
-    },
-    {
-     "id": "e62",
-     "from": "e49",
-     "to": "e43",
-     "modelId": "m62"
-    },
-    {
-     "id": "e63",
-     "from": "e50",
-     "to": "e44",
-     "modelId": "m63"
-    },
-    {
-     "id": "e64",
-     "from": "e51",
-     "to": "e45",
-     "modelId": "m64"
-    },
-    {
-     "id": "e65",
-     "from": "e52",
-     "to": "e45",
-     "modelId": "m65"
-    },
-    {
-     "id": "e66",
-     "from": "e53",
-     "to": "e46",
-     "modelId": "m66"
-    },
-    {
-     "id": "e67",
-     "from": "e54",
-     "to": "e46",
-     "modelId": "m67"
-    }
-   ]
-  },
-  {
-   "id": "e87",
-   "type": "class",
-   "name": "jogak 클래스",
-   "elements": [
-    {
-     "id": "e69",
-     "fill": "#fffbd8",
-     "w": 224,
-     "h": 78,
-     "x": 60,
-     "y": 40,
-     "modelId": "m69",
-     "_m": {
-      "minW": 224,
-      "minH": 78,
-      "stereo": "«LangChain»",
-      "attrs": [],
-      "ops": [
-       "+ split_text(text: str): list[str] {abstract}"
-      ],
-      "receptions": [],
-      "headH": 42,
-      "aH": 12,
-      "oH": 24,
-      "rH": 12,
-      "showAttrs": true,
-      "showOps": true,
-      "showReceptions": false,
-      "title": "TextSplitter",
-      "icon": null,
-      "hasIcon": false
-     }
-    },
-    {
-     "id": "e70",
-     "fill": "#fffbd8",
-     "w": 312,
-     "h": 120,
-     "x": 60,
-     "y": 240,
-     "modelId": "m70",
-     "_m": {
-      "minW": 312,
-      "minH": 120,
-      "stereo": null,
-      "attrs": [
-       "- _chunker: Chunker",
-       "- _add_context: bool"
-      ],
-      "ops": [
-       "+ split_text(text: str): list[str]",
-       "+ create_documents(texts, metadatas): list[Document]",
-       "+ split_documents(documents): list[Document]"
-      ],
-      "receptions": [],
-      "headH": 27,
-      "aH": 39,
-      "oH": 54,
-      "rH": 12,
-      "showAttrs": true,
-      "showOps": true,
-      "showReceptions": false,
-      "title": "JogakTextSplitter",
-      "icon": null,
-      "hasIcon": false
-     }
-    },
-    {
-     "id": "e71",
-     "fill": "#fffbd8",
-     "w": 224,
-     "h": 180,
-     "x": 560,
-     "y": 240,
-     "modelId": "m71",
-     "_m": {
-      "minW": 224,
-      "minH": 180,
-      "stereo": null,
-      "attrs": [
-       "+ max_size: int",
-       "+ length_fn: LengthFn",
-       "+ merge: bool",
-       "+ item_label_chars: int",
-       "- _split_sentences: SentenceSplitter"
-      ],
-      "ops": [
-       "+ chunk(text: str, title: str): list[Chunk]",
-       "- _emit(node, src, path, out): void",
-       "- _split_long(src, s, e, path, out): void",
-       "- _hard_split(src, s, e): list[tuple]"
-      ],
-      "receptions": [],
-      "headH": 27,
-      "aH": 84,
-      "oH": 69,
-      "rH": 12,
-      "showAttrs": true,
-      "showOps": true,
-      "showReceptions": false,
-      "title": "Chunker",
-      "icon": null,
-      "hasIcon": false
-     }
-    },
-    {
-     "id": "e72",
-     "fill": "#fffbd8",
-     "w": 144,
-     "h": 78,
-     "x": 560,
-     "y": 40,
-     "modelId": "m72",
-     "_m": {
-      "minW": 144,
-      "minH": 78,
-      "stereo": "«interface»",
-      "attrs": [],
-      "ops": [
-       "+ __call__(text: str): int"
-      ],
-      "receptions": [],
-      "headH": 42,
-      "aH": 12,
-      "oH": 24,
-      "rH": 12,
-      "showAttrs": true,
-      "showOps": true,
-      "showReceptions": false,
-      "title": "LengthFn",
-      "icon": null,
-      "hasIcon": false
-     }
-    },
-    {
-     "id": "e73",
-     "fill": "#fffbd8",
-     "w": 312,
-     "h": 78,
-     "x": 900,
-     "y": 40,
-     "modelId": "m73",
-     "_m": {
-      "minW": 312,
-      "minH": 78,
-      "stereo": "«interface»",
-      "attrs": [],
-      "ops": [
-       "+ __call__(text: str, start: int, end: int): list[tuple[int, int]]"
-      ],
-      "receptions": [],
-      "headH": 42,
-      "aH": 12,
-      "oH": 24,
-      "rH": 12,
-      "showAttrs": true,
-      "showOps": true,
-      "showReceptions": false,
-      "title": "SentenceSplitter",
-      "icon": null,
-      "hasIcon": false
-     }
-    },
-    {
-     "id": "e74",
-     "fill": "#fffbd8",
-     "w": 128,
-     "h": 180,
-     "x": 60,
-     "y": 560,
-     "modelId": "m74",
-     "_m": {
-      "minW": 128,
-      "minH": 180,
-      "stereo": "«dataclass»",
-      "attrs": [
-       "+ text: str",
-       "+ start: int",
-       "+ end: int",
-       "+ path: tuple[str, ...]",
-       "+ index: int"
-      ],
-      "ops": [
-       "+ context(): str",
-       "+ embed_text(): str",
-       "+ to_dict(): dict"
-      ],
-      "receptions": [],
-      "headH": 42,
-      "aH": 84,
-      "oH": 54,
-      "rH": 12,
-      "showAttrs": true,
-      "showOps": true,
-      "showReceptions": false,
-      "title": "Chunk",
-      "icon": null,
-      "hasIcon": false
-     }
-    },
-    {
-     "id": "e75",
-     "fill": "#fffbd8",
-     "w": 208,
-     "h": 165,
-     "x": 1040,
-     "y": 280,
-     "modelId": "m75",
-     "_m": {
-      "minW": 208,
-      "minH": 165,
-      "stereo": null,
-      "attrs": [
-       "- text: str",
-       "- root: Node",
-       "- stack: list[Node]",
-       "- last_article: int"
-      ],
-      "ops": [
-       "+ parse(): Node",
-       "- _line(s, offset, line_end): void",
-       "- _push_heading(m, offset): Node",
-       "- _push_item(m, offset): bool"
-      ],
-      "receptions": [],
-      "headH": 27,
-      "aH": 69,
-      "oH": 69,
-      "rH": 12,
-      "showAttrs": true,
-      "showOps": true,
-      "showReceptions": false,
-      "title": "_Parser",
-      "icon": null,
-      "hasIcon": false
-     }
-    },
-    {
-     "id": "e76",
-     "fill": "#fffbd8",
-     "w": 152,
-     "h": 270,
-     "x": 560,
-     "y": 600,
-     "modelId": "m76",
-     "_m": {
-      "minW": 152,
-      "minH": 270,
-      "stereo": "«dataclass»",
-      "attrs": [
-       "+ kind: str",
-       "+ type: str",
-       "+ label: str",
-       "+ start: int",
-       "+ body_start: int",
-       "+ rank: int",
-       "+ ordinal: int | None",
-       "+ content_end: int",
-       "+ children: list[Node]",
-       "+ parent: Node | None"
-      ],
-      "ops": [
-       "+ end(): int",
-       "+ own_end(): int",
-       "+ walk(): Iterator[Node]",
-       "+ to_dict(source): dict"
-      ],
-      "receptions": [],
-      "headH": 42,
-      "aH": 159,
-      "oH": 69,
-      "rH": 12,
-      "showAttrs": true,
-      "showOps": true,
-      "showReceptions": false,
-      "title": "Node",
-      "icon": null,
-      "hasIcon": false
-     }
-    },
-    {
-     "id": "e77",
-     "fill": "#fffbd8",
-     "w": 128,
-     "h": 153,
-     "x": 1040,
-     "y": 640,
-     "modelId": "m77",
-     "_m": {
-      "minW": 128,
-      "minH": 153,
-      "stereo": "«dataclass»",
-      "attrs": [
-       "+ kind: str",
-       "+ type: str",
-       "+ label: str",
-       "+ end: int",
-       "+ rank: int",
-       "+ ordinal: int | None"
-      ],
-      "ops": [],
-      "receptions": [],
-      "headH": 42,
-      "aH": 99,
-      "oH": 12,
-      "rH": 12,
-      "showAttrs": true,
-      "showOps": true,
-      "showReceptions": false,
-      "title": "Marker",
-      "icon": null,
-      "hasIcon": false
-     }
-    }
-   ],
-   "relations": [
-    {
-     "id": "e78",
-     "from": "e70",
-     "to": "e69",
-     "modelId": "m78"
-    },
-    {
-     "id": "e79",
-     "from": "e71",
-     "to": "e70",
-     "modelId": "m79"
-    },
-    {
-     "id": "e80",
-     "from": "e71",
-     "to": "e72",
-     "modelId": "m80"
-    },
-    {
-     "id": "e81",
-     "from": "e71",
-     "to": "e73",
-     "modelId": "m81"
-    },
-    {
-     "id": "e82",
-     "from": "e71",
-     "to": "e74",
-     "modelId": "m82"
-    },
-    {
-     "id": "e83",
-     "from": "e71",
-     "to": "e75",
-     "modelId": "m83"
-    },
-    {
-     "id": "e84",
-     "from": "e71",
-     "to": "e76",
-     "modelId": "m84"
-    },
-    {
-     "id": "e85",
-     "from": "e75",
-     "to": "e76",
-     "modelId": "m85"
-    },
-    {
-     "id": "e86",
-     "from": "e75",
-     "to": "e77",
-     "modelId": "m86"
-    }
-   ]
-  },
-  {
-   "id": "e115",
-   "type": "sequence",
-   "name": "Chunker.chunk() 시퀀스",
-   "elements": [
-    {
-     "id": "e94",
-     "fill": "#ffffff",
-     "w": 1420,
-     "h": 1185,
-     "x": 20,
-     "y": 8,
-     "modelId": "m94",
-     "_m": {
-      "minW": 240,
-      "minH": 160
-     }
-    },
-    {
-     "id": "e88",
-     "fill": "#fffbd8",
-     "w": 56,
-     "h": 52,
-     "x": 40,
-     "y": 40,
-     "modelId": "m88",
-     "_m": {
-      "minW": 56,
-      "minH": 52,
-      "stereo": "",
-      "title": "사용자"
-     }
-    },
-    {
-     "id": "e89",
-     "fill": "#fffbd8",
-     "w": 88,
-     "h": 40,
-     "x": 320,
-     "y": 40,
-     "modelId": "m89",
-     "_m": {
-      "minW": 88,
-      "minH": 40,
-      "stereo": "",
-      "title": ":Chunker"
-     }
-    },
-    {
-     "id": "e90",
-     "fill": "#fffbd8",
-     "w": 88,
-     "h": 40,
-     "x": 560,
-     "y": 40,
-     "modelId": "m90",
-     "_m": {
-      "minW": 88,
-      "minH": 40,
-      "stereo": "",
-      "title": ":_Parser"
-     }
-    },
-    {
-     "id": "e91",
-     "fill": "#fffbd8",
-     "w": 88,
-     "h": 40,
-     "x": 800,
-     "y": 40,
-     "modelId": "m91",
-     "_m": {
-      "minW": 88,
-      "minH": 40,
-      "stereo": "",
-      "title": "markers"
-     }
-    },
-    {
-     "id": "e92",
-     "fill": "#fffbd8",
-     "w": 136,
-     "h": 40,
-     "x": 1010,
-     "y": 40,
-     "modelId": "m92",
-     "_m": {
-      "minW": 136,
-      "minH": 40,
-      "stereo": "",
-      "title": ":SentenceSplitter"
-     }
-    },
-    {
-     "id": "e93",
-     "fill": "#fffbd8",
-     "w": 88,
-     "h": 40,
-     "x": 1230,
-     "y": 40,
-     "modelId": "m93",
-     "_m": {
-      "minW": 88,
-      "minH": 40,
-      "stereo": "",
-      "title": "length_fn"
-     }
-    },
-    {
-     "id": "e95",
-     "fill": "#fffbd8",
-     "w": 560,
-     "h": 410,
-     "x": 400,
-     "y": 200,
-     "modelId": "m95",
-     "_m": {
-      "minW": 136,
-      "minH": 88
-     }
-    },
-    {
-     "id": "e96",
-     "fill": "#fffbd8",
-     "w": 520,
-     "h": 290,
-     "x": 420,
-     "y": 300,
-     "modelId": "m96",
-     "_m": {
-      "minW": 136,
-      "minH": 88
-     }
-    },
-    {
-     "id": "e97",
-     "fill": "#fffbd8",
-     "w": 1270,
-     "h": 340,
-     "x": 150,
-     "y": 720,
-     "modelId": "m97",
-     "_m": {
-      "minW": 136,
-      "minH": 88
-     }
-    },
-    {
-     "id": "e98",
-     "fill": "#fffbd8",
-     "w": 1230,
-     "h": 220,
-     "x": 170,
-     "y": 820,
-     "modelId": "m98",
-     "_m": {
-      "minW": 136,
-      "minH": 88
-     }
-    }
-   ],
-   "relations": [
-    {
-     "id": "e99",
-     "from": "e88",
-     "to": "e89",
-     "y": 130,
-     "modelId": "m99"
-    },
-    {
-     "id": "e100",
-     "from": "e89",
-     "to": "e90",
-     "y": 170,
-     "modelId": "m100"
-    },
-    {
-     "id": "e101",
-     "from": "e90",
-     "to": "e91",
-     "y": 245,
-     "modelId": "m101"
-    },
-    {
-     "id": "e102",
-     "from": "e91",
-     "to": "e90",
-     "y": 275,
-     "modelId": "m102"
-    },
-    {
-     "id": "e103",
-     "from": "e90",
-     "to": "e90",
-     "y": 355,
-     "modelId": "m103"
-    },
-    {
-     "id": "e104",
-     "from": "e90",
-     "to": "e91",
-     "y": 490,
-     "modelId": "m104"
-    },
-    {
-     "id": "e105",
-     "from": "e91",
-     "to": "e90",
-     "y": 520,
-     "modelId": "m105"
-    },
-    {
-     "id": "e106",
-     "from": "e90",
-     "to": "e90",
-     "y": 545,
-     "modelId": "m106"
-    },
-    {
-     "id": "e107",
-     "from": "e90",
-     "to": "e89",
-     "y": 640,
-     "modelId": "m107"
-    },
-    {
-     "id": "e108",
-     "from": "e89",
-     "to": "e89",
-     "y": 660,
-     "modelId": "m108"
-    },
-    {
-     "id": "e109",
-     "from": "e89",
-     "to": "e93",
-     "y": 765,
-     "modelId": "m109"
-    },
-    {
-     "id": "e110",
-     "from": "e93",
-     "to": "e89",
-     "y": 795,
-     "modelId": "m110"
-    },
-    {
-     "id": "e111",
-     "from": "e89",
-     "to": "e89",
-     "y": 870,
-     "modelId": "m111"
-    },
-    {
-     "id": "e112",
-     "from": "e89",
-     "to": "e92",
-     "y": 975,
-     "modelId": "m112"
-    },
-    {
-     "id": "e113",
-     "from": "e92",
-     "to": "e89",
-     "y": 1005,
-     "modelId": "m113"
-    },
-    {
-     "id": "e114",
-     "from": "e89",
-     "to": "e88",
-     "y": 1095,
-     "modelId": "m114"
-    }
-   ]
-  },
-  {
-   "id": "e164",
-   "type": "activity",
-   "name": "_emit(node) 활동",
-   "elements": [
-    {
-     "id": "e125",
-     "fill": "#fffbd8",
-     "w": 1200,
-     "h": 480,
-     "x": 70,
-     "y": 530,
-     "modelId": "m125",
-     "_m": {
-      "minW": 280,
-      "minH": 176
-     }
-    },
-    {
-     "id": "e126",
-     "fill": "#ffffff",
-     "w": 16,
-     "h": 16,
-     "parentId": "e125",
-     "borderAnchor": {
-      "fx": 0.5,
-      "fy": 0
-     },
-     "x": 662,
-     "y": 522,
-     "modelId": "m126",
-     "_m": {
-      "minW": 16,
-      "minH": 16
-     }
-    },
-    {
-     "id": "e116",
-     "fill": "#fffbd8",
-     "w": 28,
-     "h": 28,
-     "x": 656,
-     "y": 20,
-     "modelId": "m116",
-     "_m": {
-      "minW": 24,
-      "minH": 24
-     }
-    },
-    {
-     "id": "e117",
-     "fill": "#fffbd8",
-     "w": 220,
-     "h": 64,
-     "x": 560,
-     "y": 80,
-     "modelId": "m117",
-     "_m": {
-      "minW": 152,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e118",
-     "fill": "#fffbd8",
-     "w": 240,
-     "h": 48,
-     "x": 860,
-     "y": 88,
-     "modelId": "m118",
-     "_m": {
-      "minW": 160,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e119",
-     "fill": "#fffbd8",
-     "w": 28,
-     "h": 28,
-     "x": 1180,
-     "y": 98,
-     "modelId": "m119",
-     "_m": {
-      "minW": 28,
-      "minH": 28
-     }
-    },
-    {
-     "id": "e120",
-     "fill": "#fffbd8",
-     "w": 240,
-     "h": 48,
-     "x": 550,
-     "y": 190,
-     "modelId": "m120",
-     "_m": {
-      "minW": 176,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e121",
-     "fill": "#fffbd8",
-     "w": 220,
-     "h": 64,
-     "x": 560,
-     "y": 280,
-     "modelId": "m121",
-     "_m": {
-      "minW": 152,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e122",
-     "fill": "#fffbd8",
-     "w": 240,
-     "h": 48,
-     "x": 840,
-     "y": 288,
-     "modelId": "m122",
-     "_m": {
-      "minW": 184,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e123",
-     "fill": "#fffbd8",
-     "w": 88,
-     "h": 40,
-     "x": 626,
-     "y": 380,
-     "modelId": "m123",
-     "_m": {
-      "minW": 88,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e124",
-     "fill": "#fffbd8",
-     "w": 240,
-     "h": 48,
-     "x": 550,
-     "y": 450,
-     "modelId": "m124",
-     "_m": {
-      "minW": 176,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e127",
-     "fill": "#fffbd8",
-     "w": 220,
-     "h": 64,
-     "x": 560,
-     "y": 580,
-     "parentId": "e125",
-     "modelId": "m127",
-     "_m": {
-      "minW": 168,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e128",
-     "fill": "#fffbd8",
-     "w": 220,
-     "h": 48,
-     "x": 250,
-     "y": 588,
-     "parentId": "e125",
-     "modelId": "m128",
-     "_m": {
-      "minW": 160,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e129",
-     "fill": "#fffbd8",
-     "w": 220,
-     "h": 64,
-     "x": 250,
-     "y": 690,
-     "parentId": "e125",
-     "modelId": "m129",
-     "_m": {
-      "minW": 120,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e130",
-     "fill": "#fffbd8",
-     "w": 250,
-     "h": 48,
-     "x": 90,
-     "y": 800,
-     "parentId": "e125",
-     "modelId": "m130",
-     "_m": {
-      "minW": 208,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e131",
-     "fill": "#fffbd8",
-     "w": 170,
-     "h": 48,
-     "x": 355,
-     "y": 800,
-     "parentId": "e125",
-     "modelId": "m131",
-     "_m": {
-      "minW": 136,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e132",
-     "fill": "#fffbd8",
-     "w": 220,
-     "h": 64,
-     "x": 560,
-     "y": 690,
-     "parentId": "e125",
-     "modelId": "m132",
-     "_m": {
-      "minW": 160,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e133",
-     "fill": "#fffbd8",
-     "w": 240,
-     "h": 48,
-     "x": 900,
-     "y": 698,
-     "parentId": "e125",
-     "modelId": "m133",
-     "_m": {
-      "minW": 120,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e134",
-     "fill": "#fffbd8",
-     "w": 240,
-     "h": 48,
-     "x": 550,
-     "y": 800,
-     "parentId": "e125",
-     "modelId": "m134",
-     "_m": {
-      "minW": 168,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e135",
-     "fill": "#fffbd8",
-     "w": 88,
-     "h": 40,
-     "x": 626,
-     "y": 890,
-     "parentId": "e125",
-     "modelId": "m135",
-     "_m": {
-      "minW": 88,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e136",
-     "fill": "#fffbd8",
-     "w": 26,
-     "h": 26,
-     "x": 658,
-     "y": 960,
-     "parentId": "e125",
-     "modelId": "m136",
-     "_m": {
-      "minW": 26,
-      "minH": 26
-     }
-    },
-    {
-     "id": "e137",
-     "fill": "#fffbd8",
-     "w": 240,
-     "h": 48,
-     "x": 550,
-     "y": 1050,
-     "modelId": "m137",
-     "_m": {
-      "minW": 120,
-      "minH": 40
-     }
-    },
-    {
-     "id": "e138",
-     "fill": "#fffbd8",
-     "w": 28,
-     "h": 28,
-     "x": 656,
-     "y": 1140,
-     "modelId": "m138",
-     "_m": {
-      "minW": 28,
-      "minH": 28
-     }
-    }
-   ],
-   "relations": [
-    {
-     "id": "e139",
-     "from": "e116",
-     "to": "e117",
-     "modelId": "m139"
-    },
-    {
-     "id": "e140",
-     "from": "e117",
-     "to": "e118",
-     "modelId": "m140"
-    },
-    {
-     "id": "e141",
-     "from": "e118",
-     "to": "e119",
-     "modelId": "m141"
-    },
-    {
-     "id": "e142",
-     "from": "e117",
-     "to": "e120",
-     "modelId": "m142"
-    },
-    {
-     "id": "e143",
-     "from": "e120",
-     "to": "e121",
-     "modelId": "m143"
-    },
-    {
-     "id": "e144",
-     "from": "e121",
-     "to": "e122",
-     "modelId": "m144"
-    },
-    {
-     "id": "e145",
-     "from": "e122",
-     "to": "e123",
-     "modelId": "m145"
-    },
-    {
-     "id": "e146",
-     "from": "e121",
-     "to": "e123",
-     "modelId": "m146"
-    },
-    {
-     "id": "e147",
-     "from": "e123",
-     "to": "e124",
-     "modelId": "m147"
-    },
-    {
-     "id": "e148",
-     "from": "e124",
-     "to": "e126",
-     "modelId": "m148"
-    },
-    {
-     "id": "e149",
-     "from": "e126",
-     "to": "e127",
-     "modelId": "m149"
-    },
-    {
-     "id": "e150",
-     "from": "e127",
-     "to": "e128",
-     "modelId": "m150"
-    },
-    {
-     "id": "e151",
-     "from": "e128",
-     "to": "e129",
-     "modelId": "m151"
-    },
-    {
-     "id": "e152",
-     "from": "e129",
-     "to": "e130",
-     "modelId": "m152"
-    },
-    {
-     "id": "e153",
-     "from": "e129",
-     "to": "e131",
-     "modelId": "m153"
-    },
-    {
-     "id": "e154",
-     "from": "e127",
-     "to": "e132",
-     "modelId": "m154"
-    },
-    {
-     "id": "e155",
-     "from": "e132",
-     "to": "e133",
-     "modelId": "m155"
-    },
-    {
-     "id": "e156",
-     "from": "e132",
-     "to": "e134",
-     "modelId": "m156"
-    },
-    {
-     "id": "e157",
-     "from": "e130",
-     "to": "e135",
-     "modelId": "m157"
-    },
-    {
-     "id": "e158",
-     "from": "e131",
-     "to": "e135",
-     "modelId": "m158"
-    },
-    {
-     "id": "e159",
-     "from": "e133",
-     "to": "e135",
-     "modelId": "m159"
-    },
-    {
-     "id": "e160",
-     "from": "e134",
-     "to": "e135",
-     "modelId": "m160"
-    },
-    {
-     "id": "e161",
-     "from": "e135",
-     "to": "e136",
-     "modelId": "m161"
-    },
-    {
-     "id": "e162",
-     "from": "e125",
-     "to": "e137",
-     "modelId": "m162"
-    },
-    {
-     "id": "e163",
-     "from": "e137",
-     "to": "e138",
-     "modelId": "m163"
     }
    ]
   }
  ],
- "activeId": "e40",
- "idSeq": 165,
+ "activeId": "e36",
+ "idSeq": 37,
  "counters": {}
 }
