@@ -210,6 +210,8 @@ python benchmark/plot.py  # benchmark/results/*.json → docs/benchmark.png
 
 ## 개발
 
+모듈 구조, 클래스, 처리 흐름은 [아키텍처 문서](https://github.com/MSbtff/jogak/blob/main/docs/architecture.md)에 UML 다이어그램으로 정리되어 있습니다.
+
 ```bash
 pip install -e ".[dev,kiwi,tiktoken,langchain]"
 pytest
