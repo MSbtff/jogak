@@ -3,8 +3,8 @@
  "projectId": "p-jogak-architecture",
  "projectName": "jogak Architecture",
  "models": {
-  "m6": {
-   "id": "m6",
+  "m2": {
+   "id": "m2",
    "kind": "node",
    "name": "사용자 서버",
    "stereotype": "device"
@@ -12,146 +12,159 @@
   "m1": {
    "id": "m1",
    "kind": "node",
-   "name": "개발자 PC",
-   "stereotype": "device"
-  },
-  "m2": {
-   "id": "m2",
-   "kind": "node",
-   "name": "github.com/MSbtff/jogak",
+   "name": "벡터 DB",
    "stereotype": "node"
   },
   "m3": {
    "id": "m3",
-   "kind": "node",
-   "name": "pypi.org/project/jogak",
-   "stereotype": "node"
+   "kind": "component",
+   "name": "jogak/__main__.py"
   },
   "m4": {
    "id": "m4",
-   "kind": "artifact",
-   "name": "jogak-0.1.0-py3-none-any.whl"
+   "kind": "component",
+   "name": "jogak/markers.py"
   },
   "m5": {
    "id": "m5",
-   "kind": "node",
-   "name": "벡터 DB",
-   "stereotype": "node"
+   "kind": "component",
+   "name": "«library» langchain-text-splitters"
+  },
+  "m6": {
+   "id": "m6",
+   "kind": "component",
+   "name": "jogak/cli.py"
   },
   "m7": {
    "id": "m7",
    "kind": "component",
-   "name": "jogak/__main__.py"
+   "name": "jogak/parser.py"
   },
   "m8": {
    "id": "m8",
    "kind": "component",
-   "name": "jogak/markers.py"
+   "name": "jogak/langchain.py"
   },
   "m9": {
    "id": "m9",
    "kind": "component",
-   "name": "«library» langchain-text-splitters"
+   "name": "RAG 애플리케이션"
   },
   "m10": {
    "id": "m10",
    "kind": "component",
-   "name": "jogak/cli.py"
+   "name": "jogak/chunker.py"
   },
   "m11": {
    "id": "m11",
    "kind": "component",
-   "name": "jogak/parser.py"
+   "name": "jogak/__init__.py"
   },
   "m12": {
    "id": "m12",
    "kind": "component",
-   "name": "jogak/langchain.py"
+   "name": "jogak/length.py"
   },
   "m13": {
    "id": "m13",
    "kind": "component",
-   "name": "RAG 애플리케이션"
+   "name": "«library» tiktoken"
   },
   "m14": {
    "id": "m14",
    "kind": "component",
-   "name": "jogak/chunker.py"
+   "name": "jogak/sentences.py"
   },
   "m15": {
    "id": "m15",
    "kind": "component",
-   "name": "jogak/__init__.py"
+   "name": "«library» kiwipiepy"
   },
   "m16": {
    "id": "m16",
    "kind": "component",
-   "name": "jogak/length.py"
+   "name": "«library» tokenizers"
   },
   "m17": {
    "id": "m17",
-   "kind": "component",
-   "name": "«library» tiktoken"
-  },
-  "m18": {
-   "id": "m18",
-   "kind": "component",
-   "name": "jogak/sentences.py"
-  },
-  "m19": {
-   "id": "m19",
-   "kind": "component",
-   "name": "«library» kiwipiepy"
-  },
-  "m20": {
-   "id": "m20",
-   "kind": "component",
-   "name": "«library» tokenizers"
-  },
-  "m21": {
-   "id": "m21",
-   "kind": "dependency",
-   "name": "git push",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m1",
-   "toModelId": "m2"
-  },
-  "m22": {
-   "id": "m22",
-   "kind": "dependency",
-   "name": "업로드 (Trusted Publishing)",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m2",
-   "toModelId": "m3"
-  },
-  "m23": {
-   "id": "m23",
-   "kind": "deploy",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m4",
-   "toModelId": "m3"
-  },
-  "m24": {
-   "id": "m24",
-   "kind": "dependency",
-   "name": "pip install jogak",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m6",
-   "toModelId": "m3"
-  },
-  "m25": {
-   "id": "m25",
    "kind": "dependency",
    "name": "저장 · 검색",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m13",
-   "toModelId": "m5"
+   "fromModelId": "m9",
+   "toModelId": "m1"
+  },
+  "m18": {
+   "id": "m18",
+   "kind": "dependency",
+   "name": "",
+   "sourceLabel": "",
+   "targetLabel": "",
+   "fromModelId": "m9",
+   "toModelId": "m11"
+  },
+  "m19": {
+   "id": "m19",
+   "kind": "dependency",
+   "name": "",
+   "sourceLabel": "",
+   "targetLabel": "",
+   "fromModelId": "m9",
+   "toModelId": "m8"
+  },
+  "m20": {
+   "id": "m20",
+   "kind": "dependency",
+   "name": "",
+   "sourceLabel": "",
+   "targetLabel": "",
+   "fromModelId": "m3",
+   "toModelId": "m6"
+  },
+  "m21": {
+   "id": "m21",
+   "kind": "dependency",
+   "name": "",
+   "sourceLabel": "",
+   "targetLabel": "",
+   "fromModelId": "m6",
+   "toModelId": "m10"
+  },
+  "m22": {
+   "id": "m22",
+   "kind": "dependency",
+   "name": "",
+   "sourceLabel": "",
+   "targetLabel": "",
+   "fromModelId": "m6",
+   "toModelId": "m7"
+  },
+  "m23": {
+   "id": "m23",
+   "kind": "dependency",
+   "name": "",
+   "sourceLabel": "",
+   "targetLabel": "",
+   "fromModelId": "m11",
+   "toModelId": "m10"
+  },
+  "m24": {
+   "id": "m24",
+   "kind": "dependency",
+   "name": "",
+   "sourceLabel": "",
+   "targetLabel": "",
+   "fromModelId": "m11",
+   "toModelId": "m7"
+  },
+  "m25": {
+   "id": "m25",
+   "kind": "dependency",
+   "name": "",
+   "sourceLabel": "",
+   "targetLabel": "",
+   "fromModelId": "m11",
+   "toModelId": "m14"
   },
   "m26": {
    "id": "m26",
@@ -159,8 +172,8 @@
    "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m13",
-   "toModelId": "m15"
+   "fromModelId": "m11",
+   "toModelId": "m12"
   },
   "m27": {
    "id": "m27",
@@ -168,8 +181,8 @@
    "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m13",
-   "toModelId": "m12"
+   "fromModelId": "m8",
+   "toModelId": "m10"
   },
   "m28": {
    "id": "m28",
@@ -177,8 +190,8 @@
    "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m7",
-   "toModelId": "m10"
+   "fromModelId": "m8",
+   "toModelId": "m5"
   },
   "m29": {
    "id": "m29",
@@ -187,7 +200,7 @@
    "sourceLabel": "",
    "targetLabel": "",
    "fromModelId": "m10",
-   "toModelId": "m14"
+   "toModelId": "m7"
   },
   "m30": {
    "id": "m30",
@@ -196,7 +209,7 @@
    "sourceLabel": "",
    "targetLabel": "",
    "fromModelId": "m10",
-   "toModelId": "m11"
+   "toModelId": "m14"
   },
   "m31": {
    "id": "m31",
@@ -204,8 +217,8 @@
    "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m15",
-   "toModelId": "m14"
+   "fromModelId": "m7",
+   "toModelId": "m4"
   },
   "m32": {
    "id": "m32",
@@ -213,8 +226,8 @@
    "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m15",
-   "toModelId": "m11"
+   "fromModelId": "m14",
+   "toModelId": "m15"
   },
   "m33": {
    "id": "m33",
@@ -222,8 +235,8 @@
    "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m15",
-   "toModelId": "m18"
+   "fromModelId": "m12",
+   "toModelId": "m13"
   },
   "m34": {
    "id": "m34",
@@ -231,96 +244,24 @@
    "name": "",
    "sourceLabel": "",
    "targetLabel": "",
-   "fromModelId": "m15",
+   "fromModelId": "m12",
    "toModelId": "m16"
-  },
-  "m35": {
-   "id": "m35",
-   "kind": "dependency",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m12",
-   "toModelId": "m14"
-  },
-  "m36": {
-   "id": "m36",
-   "kind": "dependency",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m12",
-   "toModelId": "m9"
-  },
-  "m37": {
-   "id": "m37",
-   "kind": "dependency",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m14",
-   "toModelId": "m11"
-  },
-  "m38": {
-   "id": "m38",
-   "kind": "dependency",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m14",
-   "toModelId": "m18"
-  },
-  "m39": {
-   "id": "m39",
-   "kind": "dependency",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m11",
-   "toModelId": "m8"
-  },
-  "m40": {
-   "id": "m40",
-   "kind": "dependency",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m18",
-   "toModelId": "m19"
-  },
-  "m41": {
-   "id": "m41",
-   "kind": "dependency",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m16",
-   "toModelId": "m17"
-  },
-  "m42": {
-   "id": "m42",
-   "kind": "dependency",
-   "name": "",
-   "sourceLabel": "",
-   "targetLabel": "",
-   "fromModelId": "m16",
-   "toModelId": "m20"
   }
  },
  "diagrams": [
   {
-   "id": "e43",
+   "id": "e35",
    "type": "deployment",
    "name": "jogak 시스템 아키텍처",
    "elements": [
     {
-     "id": "e6",
+     "id": "e2",
      "fill": "#fbfaf2",
      "w": 1402,
      "h": 598,
      "x": 40,
      "y": 238,
-     "modelId": "m6",
+     "modelId": "m2",
      "_m": {
       "minW": 128,
       "minH": 80
@@ -331,8 +272,8 @@
      "fill": "#fffbd8",
      "w": 220,
      "h": 96,
-     "x": 40,
-     "y": 40,
+     "x": 1520,
+     "y": 495,
      "modelId": "m1",
      "_m": {
       "minW": 128,
@@ -340,55 +281,59 @@
      }
     },
     {
-     "id": "e2",
-     "fill": "#fffbd8",
-     "w": 280,
-     "h": 96,
-     "x": 330,
-     "y": 40,
-     "modelId": "m2",
-     "_m": {
-      "minW": 200,
-      "minH": 80
-     }
-    },
-    {
      "id": "e3",
      "fill": "#fffbd8",
-     "w": 280,
-     "h": 96,
-     "x": 830,
-     "y": 40,
+     "w": 230,
+     "h": 56,
+     "x": 80,
+     "y": 290,
+     "parentId": "e2",
      "modelId": "m3",
      "_m": {
-      "minW": 184,
-      "minH": 80
+      "minW": 176,
+      "minH": 56
      }
     },
     {
      "id": "e4",
      "fill": "#fffbd8",
-     "w": 300,
-     "h": 60,
-     "x": 1220,
-     "y": 58,
+     "w": 230,
+     "h": 56,
+     "x": 350,
+     "y": 290,
+     "parentId": "e2",
      "modelId": "m4",
      "_m": {
-      "minW": 232,
+      "minW": 168,
       "minH": 56
      }
     },
     {
      "id": "e5",
-     "fill": "#fffbd8",
-     "w": 220,
-     "h": 96,
-     "x": 1520,
-     "y": 495,
+     "fill": "#fff3d6",
+     "w": 264,
+     "h": 56,
+     "x": 603,
+     "y": 290,
+     "parentId": "e2",
      "modelId": "m5",
      "_m": {
-      "minW": 128,
-      "minH": 80
+      "minW": 264,
+      "minH": 56
+     }
+    },
+    {
+     "id": "e6",
+     "fill": "#fffbd8",
+     "w": 230,
+     "h": 56,
+     "x": 80,
+     "y": 410,
+     "parentId": "e2",
+     "modelId": "m6",
+     "_m": {
+      "minW": 136,
+      "minH": 56
      }
     },
     {
@@ -396,12 +341,12 @@
      "fill": "#fffbd8",
      "w": 230,
      "h": 56,
-     "x": 80,
-     "y": 290,
-     "parentId": "e6",
+     "x": 350,
+     "y": 410,
+     "parentId": "e2",
      "modelId": "m7",
      "_m": {
-      "minW": 176,
+      "minW": 160,
       "minH": 56
      }
     },
@@ -410,26 +355,26 @@
      "fill": "#fffbd8",
      "w": 230,
      "h": 56,
-     "x": 350,
-     "y": 290,
-     "parentId": "e6",
+     "x": 620,
+     "y": 410,
+     "parentId": "e2",
      "modelId": "m8",
      "_m": {
-      "minW": 168,
+      "minW": 176,
       "minH": 56
      }
     },
     {
      "id": "e9",
-     "fill": "#fff3d6",
-     "w": 264,
+     "fill": "#e8f1fd",
+     "w": 230,
      "h": 56,
-     "x": 603,
-     "y": 290,
-     "parentId": "e6",
+     "x": 890,
+     "y": 410,
+     "parentId": "e2",
      "modelId": "m9",
      "_m": {
-      "minW": 264,
+      "minW": 160,
       "minH": 56
      }
     },
@@ -438,12 +383,12 @@
      "fill": "#fffbd8",
      "w": 230,
      "h": 56,
-     "x": 80,
-     "y": 410,
-     "parentId": "e6",
+     "x": 350,
+     "y": 620,
+     "parentId": "e2",
      "modelId": "m10",
      "_m": {
-      "minW": 136,
+      "minW": 168,
       "minH": 56
      }
     },
@@ -452,12 +397,12 @@
      "fill": "#fffbd8",
      "w": 230,
      "h": 56,
-     "x": 350,
-     "y": 410,
-     "parentId": "e6",
+     "x": 620,
+     "y": 620,
+     "parentId": "e2",
      "modelId": "m11",
      "_m": {
-      "minW": 160,
+      "minW": 168,
       "minH": 56
      }
     },
@@ -466,26 +411,26 @@
      "fill": "#fffbd8",
      "w": 230,
      "h": 56,
-     "x": 620,
-     "y": 410,
-     "parentId": "e6",
+     "x": 890,
+     "y": 620,
+     "parentId": "e2",
      "modelId": "m12",
      "_m": {
-      "minW": 176,
+      "minW": 160,
       "minH": 56
      }
     },
     {
      "id": "e13",
-     "fill": "#e8f1fd",
+     "fill": "#fff3d6",
      "w": 230,
      "h": 56,
-     "x": 890,
-     "y": 410,
-     "parentId": "e6",
+     "x": 1160,
+     "y": 620,
+     "parentId": "e2",
      "modelId": "m13",
      "_m": {
-      "minW": 160,
+      "minW": 168,
       "minH": 56
      }
     },
@@ -495,93 +440,37 @@
      "w": 230,
      "h": 56,
      "x": 350,
-     "y": 620,
-     "parentId": "e6",
-     "modelId": "m14",
-     "_m": {
-      "minW": 168,
-      "minH": 56
-     }
-    },
-    {
-     "id": "e15",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 56,
-     "x": 620,
-     "y": 620,
-     "parentId": "e6",
-     "modelId": "m15",
-     "_m": {
-      "minW": 168,
-      "minH": 56
-     }
-    },
-    {
-     "id": "e16",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 56,
-     "x": 890,
-     "y": 620,
-     "parentId": "e6",
-     "modelId": "m16",
-     "_m": {
-      "minW": 160,
-      "minH": 56
-     }
-    },
-    {
-     "id": "e17",
-     "fill": "#fff3d6",
-     "w": 230,
-     "h": 56,
-     "x": 1160,
-     "y": 620,
-     "parentId": "e6",
-     "modelId": "m17",
-     "_m": {
-      "minW": 168,
-      "minH": 56
-     }
-    },
-    {
-     "id": "e18",
-     "fill": "#fffbd8",
-     "w": 230,
-     "h": 56,
-     "x": 350,
      "y": 740,
-     "parentId": "e6",
-     "modelId": "m18",
+     "parentId": "e2",
+     "modelId": "m14",
      "_m": {
       "minW": 184,
       "minH": 56
      }
     },
     {
-     "id": "e19",
+     "id": "e15",
      "fill": "#fff3d6",
      "w": 230,
      "h": 56,
      "x": 620,
      "y": 740,
-     "parentId": "e6",
-     "modelId": "m19",
+     "parentId": "e2",
+     "modelId": "m15",
      "_m": {
       "minW": 176,
       "minH": 56
      }
     },
     {
-     "id": "e20",
+     "id": "e16",
      "fill": "#fff3d6",
      "w": 230,
      "h": 56,
      "x": 890,
      "y": 740,
-     "parentId": "e6",
-     "modelId": "m20",
+     "parentId": "e2",
+     "modelId": "m16",
      "_m": {
       "minW": 184,
       "minH": 56
@@ -590,141 +479,117 @@
    ],
    "relations": [
     {
+     "id": "e17",
+     "from": "e9",
+     "to": "e1",
+     "modelId": "m17"
+    },
+    {
+     "id": "e18",
+     "from": "e9",
+     "to": "e11",
+     "modelId": "m18"
+    },
+    {
+     "id": "e19",
+     "from": "e9",
+     "to": "e8",
+     "modelId": "m19"
+    },
+    {
+     "id": "e20",
+     "from": "e3",
+     "to": "e6",
+     "modelId": "m20"
+    },
+    {
      "id": "e21",
-     "from": "e1",
-     "to": "e2",
+     "from": "e6",
+     "to": "e10",
      "modelId": "m21"
     },
     {
      "id": "e22",
-     "from": "e2",
-     "to": "e3",
+     "from": "e6",
+     "to": "e7",
      "modelId": "m22"
     },
     {
      "id": "e23",
-     "from": "e4",
-     "to": "e3",
+     "from": "e11",
+     "to": "e10",
      "modelId": "m23"
     },
     {
      "id": "e24",
-     "from": "e6",
-     "to": "e3",
+     "from": "e11",
+     "to": "e7",
      "modelId": "m24"
     },
     {
      "id": "e25",
-     "from": "e13",
-     "to": "e5",
+     "from": "e11",
+     "to": "e14",
      "modelId": "m25"
     },
     {
      "id": "e26",
-     "from": "e13",
-     "to": "e15",
+     "from": "e11",
+     "to": "e12",
      "modelId": "m26"
     },
     {
      "id": "e27",
-     "from": "e13",
-     "to": "e12",
+     "from": "e8",
+     "to": "e10",
      "modelId": "m27"
     },
     {
      "id": "e28",
-     "from": "e7",
-     "to": "e10",
+     "from": "e8",
+     "to": "e5",
      "modelId": "m28"
     },
     {
      "id": "e29",
      "from": "e10",
-     "to": "e14",
+     "to": "e7",
      "modelId": "m29"
     },
     {
      "id": "e30",
      "from": "e10",
-     "to": "e11",
+     "to": "e14",
      "modelId": "m30"
     },
     {
      "id": "e31",
-     "from": "e15",
-     "to": "e14",
+     "from": "e7",
+     "to": "e4",
      "modelId": "m31"
     },
     {
      "id": "e32",
-     "from": "e15",
-     "to": "e11",
+     "from": "e14",
+     "to": "e15",
      "modelId": "m32"
     },
     {
      "id": "e33",
-     "from": "e15",
-     "to": "e18",
+     "from": "e12",
+     "to": "e13",
      "modelId": "m33"
     },
     {
      "id": "e34",
-     "from": "e15",
+     "from": "e12",
      "to": "e16",
      "modelId": "m34"
-    },
-    {
-     "id": "e35",
-     "from": "e12",
-     "to": "e14",
-     "modelId": "m35"
-    },
-    {
-     "id": "e36",
-     "from": "e12",
-     "to": "e9",
-     "modelId": "m36"
-    },
-    {
-     "id": "e37",
-     "from": "e14",
-     "to": "e11",
-     "modelId": "m37"
-    },
-    {
-     "id": "e38",
-     "from": "e14",
-     "to": "e18",
-     "modelId": "m38"
-    },
-    {
-     "id": "e39",
-     "from": "e11",
-     "to": "e8",
-     "modelId": "m39"
-    },
-    {
-     "id": "e40",
-     "from": "e18",
-     "to": "e19",
-     "modelId": "m40"
-    },
-    {
-     "id": "e41",
-     "from": "e16",
-     "to": "e17",
-     "modelId": "m41"
-    },
-    {
-     "id": "e42",
-     "from": "e16",
-     "to": "e20",
-     "modelId": "m42"
     }
    ]
   }
  ],
- "activeId": "e43",
- "idSeq": 44,
+ "activeId": "e35",
+ "idSeq": 36,
  "counters": {}
 }
