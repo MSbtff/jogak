@@ -125,6 +125,71 @@ def test_empty_and_plain_text():
     assert root.end == len("그냥 문단입니다.\n다음 줄.")
 
 
+def test_wrapped_citation_is_not_article():
+    # PDF 에서 줄이 바뀌어 본문 속 인용 "제3조 및 …" 이 줄 머리에 온 경우
+    text = (
+        "제2조(정의) 이 법의 적용 범위는\n"
+        "제3조 및 제4조에서 정하는 바에 따른다.\n"
+        "제3조(적용 범위) 이 법은 모든 사업장에 적용한다."
+    )
+    assert outline(text) == ["제2조(정의)", "제3조(적용 범위)"]
+    art2 = parse(text).children[0]
+    assert text[art2.start : art2.end].endswith("정하는 바에 따른다.")
+
+
+def test_omitted_article_ranges_in_addenda():
+    text = "부칙\n제1조(시행일) 이 법은 공포한 날부터 시행한다.\n제2조 부터 제5조까지 생략"
+    assert outline(text) == ["부칙", "  제1조(시행일)", "  제2조"]
+
+
+def test_page_numbers_and_running_headers_are_not_structure():
+    page = "정보보안 관리 규정\n"
+    text = (
+        page
+        + "제5조(의무) ① 사업주는 다음 각 호를 지켜야 한다.\n1. 안전 교육\n- 3 -\n"
+        + page
+        + "2. 보건 관리\n② 위반 시 제재한다.\n- 4 -\n"
+        + page
+        + "제6조(벌칙) 벌금에 처한다."
+    )
+    assert outline(text) == ["제5조(의무)", "  ①", "    1.", "    2.", "  ②", "제6조(벌칙)"]
+    item2 = next(n for n in parse(text).walk() if n.label == "2.")
+    assert text[item2.start : item2.end] == "2. 보건 관리"
+    item1 = next(n for n in parse(text).walk() if n.label == "1.")
+    assert text[item1.start : item1.end] == "1. 안전 교육"
+
+
+def test_repeated_sentence_lines_are_kept():
+    text = "1. 첫째\n해당 사항 없다.\n2. 둘째\n해당 사항 없다.\n3. 셋째\n해당 사항 없다."
+    third = parse(text).children[2]
+    assert text[third.start : third.end] == "3. 셋째\n해당 사항 없다."
+
+
+def test_report_outline_roman_decimal_bullets():
+    text = (
+        "Ⅰ. 추진 배경\n 1. 현황\n  ◦ 시스템 노후화\n  ◦ 보안 취약\n"
+        "Ⅱ. 추진 계획\n1.1 목적\n1.2 범위\n1.2.1 세부 범위\n1.3 일정\n"
+        "Ⅲ. 기대 효과"
+    )
+    assert outline(text) == [
+        "Ⅰ.",
+        "  1.",
+        "    ◦",
+        "    ◦",
+        "Ⅱ.",
+        "  1.1",
+        "  1.2",
+        "    1.2.1",
+        "  1.3",
+        "Ⅲ.",
+    ]
+
+
+def test_decimal_numbering_nests_under_num_dot():
+    text = "1. 개요\n1.1 목적\n1.2 범위\n2. 절차\n2.1 신청"
+    assert outline(text) == ["1.", "  1.1", "  1.2", "2.", "  2.1"]
+
+
 def test_to_dict(law):
     d = parse(law).to_dict(law)
     assert d["kind"] == "document"

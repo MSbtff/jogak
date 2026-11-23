@@ -6,7 +6,11 @@ from collections.abc import Iterator
 from dataclasses import dataclass, field
 from typing import Any
 
-from .markers import Marker, match_heading, match_item
+from .markers import Marker, is_page_number, match_heading, match_item
+
+# 쪽마다 되풀이되는 머리글·꼬리글로 볼 기준: 마커가 없는 짧은 줄이 이만큼 이상 똑같이 나옴
+_RUNNING_HEADER_MIN_REPEATS = 3
+_RUNNING_HEADER_MAX_CHARS = 40
 
 
 @dataclass(eq=False)
@@ -65,13 +69,17 @@ class _Parser:
         self.last_article = 0
 
     def parse(self) -> Node:
+        lines = self.text.splitlines(keepends=True)
+        noise = _running_headers(lines)
         pos = 0
-        for raw in self.text.splitlines(keepends=True):
+        for raw in lines:
             line_start = pos
             pos += len(raw)
             content = raw.rstrip("\r\n")
             stripped = content.lstrip()
-            if not stripped:
+            # 쪽 번호와 머리글은 구조로 보지 않고, 노드 본문의 끝을 늘리지도 않습니다.
+            # (청크는 원문 구간이므로, 노드 사이에 끼어 있으면 청크 안에는 남을 수 있습니다.)
+            if not stripped or is_page_number(stripped.rstrip()) or stripped.rstrip() in noise:
                 continue
             offset = line_start + len(content) - len(stripped)
             line_end = line_start + len(content)
@@ -139,6 +147,23 @@ class _Parser:
         node.parent = parent
         parent.children.append(node)
         self.stack.append(node)
+
+
+def _running_headers(lines: list[str]) -> set[str]:
+    """여러 번 똑같이 나오는, 마커 없는 짧은 줄(쪽 머리글·꼬리글)을 찾습니다."""
+    counts: dict[str, int] = {}
+    for raw in lines:
+        s = raw.strip()
+        if s and len(s) <= _RUNNING_HEADER_MAX_CHARS:
+            counts[s] = counts.get(s, 0) + 1
+    return {
+        s
+        for s, n in counts.items()
+        if n >= _RUNNING_HEADER_MIN_REPEATS
+        and match_heading(s, 0) is None
+        and match_item(s) is None
+        and not s.endswith(("다.", ">", "]"))  # 반복되는 문장·개정 표시는 본문으로 둠
+    }
 
 
 def parse(text: str) -> Node:
