@@ -48,6 +48,14 @@ _ADDENDA = re.compile(r"부\s*칙(?:\s*[<(\[].*)?\s*$")
 _APPENDIX = re.compile(r"\[\s*별\s*(?:표|지)[^\]\n]{0,20}\](.*)$")
 _MD_HEADING = re.compile(r"(#{1,6})\s+(.+?)\s*#*\s*$")
 _CIRCLED_START = re.compile(r"\s*[①-⑳]")
+# "제3조 및 제4조에서 …", "제3조, 제5조 …", "제3조 제2항에 따라 …" 처럼 조 번호 뒤가 인용을
+# 잇는 말이면 조문이 아니라 본문 속 인용입니다. PDF 에서 줄이 바뀌어 줄 머리에 오는 경우가 많습니다.
+_CITATION_TAIL = re.compile(
+    r"\s*(?:[,、·ㆍ~∼]|(?:및|또는|내지|부터|까지|단서|본문|전단|후단)(?=\s|$)"
+    r"|각\s*(?:호|항|목)|제\s*[0-9])"
+)
+# 다만 부칙의 "제2조 부터 제8조까지 생략", "제13조 및 제14조 삭제" 는 실제 조문 줄입니다.
+_OMITTED_RANGE = re.compile(r".*(?:생략|삭제)\s*(?:<[^<>\n]*>)?\s*$")
 
 
 def match_heading(line: str, last_article: int) -> Marker | None:
@@ -85,8 +93,13 @@ def match_heading(line: str, last_article: int) -> Marker | None:
                 title is not None
                 or not rest.strip()
                 or _CIRCLED_START.match(rest) is not None
-                or (sub is None and num == last_article + 1)
-                or (sub is not None and num == last_article)
+                or (
+                    (_CITATION_TAIL.match(rest) is None or _OMITTED_RANGE.match(rest) is not None)
+                    and (
+                        (sub is None and num == last_article + 1)
+                        or (sub is not None and num == last_article)
+                    )
+                )
             )
             if plausible:
                 return Marker(
@@ -124,7 +137,15 @@ def _item(core: str, tail: str = r"(?=\s|$)") -> re.Pattern[str]:
     return re.compile(_B + core + _B + tail)
 
 
+_ROMAN_UNI = "ⅠⅡⅢⅣⅤⅥⅦⅧⅨⅩⅪⅫ"
+_ROMAN_VALUES = {"I": 1, "V": 5, "X": 10}
+
 _ITEM_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
+    # 보고서·공문서의 로마숫자: "Ⅰ. 추진 배경", "Ⅱ 추진 계획", "IV. 결론"
+    ("roman", _item(rf"([{_ROMAN_UNI}])\\?\.?")),
+    ("roman", _item(r"([IVX]{1,4})\\?\.")),
+    # 소수점 번호: "1.1 목적", "1.2.1. 세부 범위". 깊이(점 개수)마다 다른 종류로 봅니다.
+    ("decimal", _item(r"([1-9][0-9]?(?:\.[0-9]{1,2}){1,4})\.?")),
     ("num_pparen", _item(r"\\?\(([0-9]{1,2})\\?\)")),
     ("han_pparen", _item(rf"\\?\(([{_HAN}])\\?\)")),
     ("num_dot", _item(rf"([0-9]{{1,2}}){_SUB}\\?\.")),
@@ -133,13 +154,27 @@ _ITEM_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     ("han_paren", _item(rf"([{_HAN}])\\?\)")),
     ("circled", _item(r"([①-⑳])", tail="")),
     ("circled_han", _item(r"([㉮-㉻])", tail="")),
-    ("bullet", _item(r"\\?([□■○●◎◇◆▶▷•·ㅇ※*\-])", tail=r"(?=\s)")),
+    ("bullet", _item(r"\\?([□■▣○●◎◦◇◆◈▶▷►•·∙▪ㅇ※➢*\-–])", tail=r"(?=\s)")),
 )
 _SPACES = re.compile(r"\s*")
 _MD_NOISE = re.compile(r"\*\*|__|\\")
 
 
+def _roman_value(token: str) -> int:
+    if token in _ROMAN_UNI:
+        return _ROMAN_UNI.index(token) + 1
+    total = 0
+    for ch, nxt in zip(token, [*token[1:], ""], strict=True):
+        v = _ROMAN_VALUES[ch]
+        total += -v if nxt and _ROMAN_VALUES[nxt] > v else v
+    return total
+
+
 def _ordinal(type_: str, token: str) -> int | None:
+    if type_ == "roman":
+        return _roman_value(token)
+    if type_.startswith("decimal"):
+        return int(token.rsplit(".", 1)[1])
     if type_.startswith("num"):
         return int(token)
     if type_.startswith("han"):
@@ -160,10 +195,28 @@ def match_item(line: str) -> Marker | None:
         token = m.group(1)
         if type_ == "bullet":
             type_ = f"bullet:{token}"
+        elif type_ == "decimal":
+            type_ = f"decimal{token.count('.') + 1}"
         end = _SPACES.match(line, m.end()).end()
         label = _MD_NOISE.sub("", m.group(0))
         return Marker("item", type_, label, end, ordinal=_ordinal(type_, token))
     return None
+
+
+# --- 잡음 -------------------------------------------------------------------
+
+_PAGE_NUMBER = re.compile(
+    r"[-–—]\s*[0-9]{1,4}\s*[-–—]"  # - 3 -
+    r"|[0-9]{1,4}\s*/\s*[0-9]{1,4}"  # 3 / 20
+    r"|[0-9]{1,4}\s*(?:쪽|페이지)"
+    r"|(?:p\.|page)\s*[0-9]{1,4}",
+    re.IGNORECASE,
+)
+
+
+def is_page_number(line: str) -> bool:
+    """앞뒤 공백을 제거한 한 줄이 쪽 번호(``- 3 -``, ``3 / 20``, ``3쪽``)뿐인지."""
+    return _PAGE_NUMBER.fullmatch(line) is not None
 
 
 def _shorten(text: str, n: int) -> str:

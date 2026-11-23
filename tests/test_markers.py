@@ -1,6 +1,6 @@
 import pytest
 
-from jogak.markers import match_heading, match_item
+from jogak.markers import is_page_number, match_heading, match_item
 
 
 @pytest.mark.parametrize(
@@ -21,6 +21,9 @@ from jogak.markers import match_heading, match_item
         ("부 칙", 0, "addenda", "부 칙"),
         ("[별표 1] 수수료 기준", 0, "appendix", "[별표 1] 수수료 기준"),
         ("## 운영 방안", 0, "md2", "운영 방안"),
+        # 부칙의 생략·삭제 범위 줄은 인용 같은 말로 이어져도 조문
+        ("제2조 부터 제8조까지 생략", 1, "article", "제2조"),
+        ("제13조 및 제14조 삭제 <2020. 1. 1.>", 12, "article", "제13조"),
     ],
 )
 def test_headings(line, last, type_, label):
@@ -35,6 +38,12 @@ def test_headings(line, last, type_, label):
         ("제3조에 따라 처리한다.", 2),
         ("제3조제1항에 따른 직원", 2),
         ("제3조 및 제4조의 규정은 준용한다.", 9),  # 제목 괄호 없고 순번도 안 맞음 → 인용
+        # 순번은 맞지만 인용을 잇는 말이 뒤따름 (PDF 줄바꿈으로 줄 머리에 온 인용)
+        ("제3조 및 제4조에서 정하는 바에 따른다.", 2),
+        ("제3조 또는 제5조에 해당하는 경우", 2),
+        ("제3조 제2항에 따른 신고", 2),
+        ("제3조 각 호의 어느 하나에 해당하면", 2),
+        ("제4조의2 · 제4조의3에 따른", 4),
         ("제2장에서 정한 바에 따른다.", 0),
         ("제2장 각 조의 규정은 이 장에 준용한다.", 0),  # "다."로 끝나는 문장
         ("부칙에서 정한다", 0),
@@ -65,6 +74,16 @@ def test_not_headings(line, last):
         ("○ 조사", "bullet:○", None, "조사"),
         ("- 기간", "bullet:-", None, "기간"),
         ("ㅇ 추진배경", "bullet:ㅇ", None, "추진배경"),
+        ("◦ 현황", "bullet:◦", None, "현황"),
+        ("∙ 세부", "bullet:∙", None, "세부"),
+        ("▪ 항목", "bullet:▪", None, "항목"),
+        ("Ⅰ. 추진 배경", "roman", 1, "추진 배경"),
+        ("Ⅳ 결론", "roman", 4, "결론"),
+        ("IV. 결론", "roman", 4, "결론"),
+        ("IX. 부록", "roman", 9, "부록"),
+        ("1.1 목적", "decimal2", 1, "목적"),
+        ("2.3. 범위", "decimal2", 3, "범위"),
+        ("1.2.1 세부 범위", "decimal3", 1, "세부 범위"),
     ],
 )
 def test_items(line, type_, ordinal, body):
@@ -100,7 +119,31 @@ def test_markdown_article_heading_label_normalized():
 
 @pytest.mark.parametrize(
     "line",
-    ["1.5배 증가", "2024. 1. 1. 시행", "거. 서수 아님", "-5도", "가나다라", "(주)회사", "100. 백"],
+    [
+        "1.5배 증가",
+        "2024. 1. 1. 시행",
+        "2024.1.1 시행",
+        "0.1 이하",
+        "Ⅰ단계",
+        "IV호",
+        "거. 서수 아님",
+        "-5도",
+        "가나다라",
+        "(주)회사",
+        "100. 백",
+    ],
 )
 def test_not_items(line):
     assert match_item(line) is None
+
+
+@pytest.mark.parametrize(
+    "line", ["- 3 -", "— 12 —", "3 / 20", "3쪽", "12 페이지", "p. 4", "Page 7"]
+)
+def test_page_numbers(line):
+    assert is_page_number(line)
+
+
+@pytest.mark.parametrize("line", ["3", "- 기간", "1. 첫째", "2024.", "3/4분기 실적"])
+def test_not_page_numbers(line):
+    assert not is_page_number(line)
